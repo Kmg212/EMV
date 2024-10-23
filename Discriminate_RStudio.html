@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kenedith. M. Méndez Gutiérrez">
+<meta name="dcterms.date" content="2024-10-23">
+
+<title>Análisis discriminante con RStudio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Discriminate_RStudio_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Discriminate_RStudio_files/libs/quarto-html/quarto.js"></script>
+<script src="Discriminate_RStudio_files/libs/quarto-html/popper.min.js"></script>
+<script src="Discriminate_RStudio_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Discriminate_RStudio_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Discriminate_RStudio_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Discriminate_RStudio_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Discriminate_RStudio_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Discriminate_RStudio_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Discriminate_RStudio_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenido</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a>
+  <ul class="collapse">
+  <li><a href="#qué-es" id="toc-qué-es" class="nav-link" data-scroll-target="#qué-es"><span class="header-section-number">1.1</span> ¿Qué es?</a></li>
+  <li><a href="#cuáles-son-los-objetivos-del-análisis" id="toc-cuáles-son-los-objetivos-del-análisis" class="nav-link" data-scroll-target="#cuáles-son-los-objetivos-del-análisis"><span class="header-section-number">1.2</span> ¿Cuáles son los objetivos del análisis?</a></li>
+  <li><a href="#qué-se-requiere-para-aplicar-el-análisis-a-una-matriz-de-datos-básica" id="toc-qué-se-requiere-para-aplicar-el-análisis-a-una-matriz-de-datos-básica" class="nav-link" data-scroll-target="#qué-se-requiere-para-aplicar-el-análisis-a-una-matriz-de-datos-básica"><span class="header-section-number">1.3</span> ¿Qué se requiere para aplicar el análisis a una matriz de datos básica?</a></li>
+  </ul></li>
+  <li><a href="#materiales" id="toc-materiales" class="nav-link" data-scroll-target="#materiales"><span class="header-section-number">2</span> Materiales</a></li>
+  <li><a href="#importe-los-datos" id="toc-importe-los-datos" class="nav-link" data-scroll-target="#importe-los-datos"><span class="header-section-number">3</span> Importe los datos</a></li>
+  <li><a href="#cómo-abordar-el-análisis" id="toc-cómo-abordar-el-análisis" class="nav-link" data-scroll-target="#cómo-abordar-el-análisis"><span class="header-section-number">4</span> ¿Cómo abordar el análisis?</a>
+  <ul class="collapse">
+  <li><a href="#paso-1.-verificación-de-los-requerimientos" id="toc-paso-1.-verificación-de-los-requerimientos" class="nav-link" data-scroll-target="#paso-1.-verificación-de-los-requerimientos"><span class="header-section-number">4.1</span> PASO 1. Verificación de los requerimientos</a>
+  <ul class="collapse">
+  <li><a href="#supuesto-de-normalidad-p---variante." id="toc-supuesto-de-normalidad-p---variante." class="nav-link" data-scroll-target="#supuesto-de-normalidad-p---variante."><span class="header-section-number">4.1.1</span> Supuesto de normalidad p - variante.</a></li>
+  <li><a href="#supupesto-de-homogeneidad-en-las-matrices-de-varianza---covarianza" id="toc-supupesto-de-homogeneidad-en-las-matrices-de-varianza---covarianza" class="nav-link" data-scroll-target="#supupesto-de-homogeneidad-en-las-matrices-de-varianza---covarianza"><span class="header-section-number">4.1.2</span> Supupesto de homogeneidad en las matrices de varianza - covarianza</a></li>
+  </ul></li>
+  <li><a href="#paso-2.-efecución-del-algoritmo." id="toc-paso-2.-efecución-del-algoritmo." class="nav-link" data-scroll-target="#paso-2.-efecución-del-algoritmo."><span class="header-section-number">4.2</span> PASO 2. Efecución del algoritmo.</a>
+  <ul class="collapse">
+  <li><a href="#para-k2." id="toc-para-k2." class="nav-link" data-scroll-target="#para-k2."><span class="header-section-number">4.2.1</span> Para K=2.</a></li>
+  <li><a href="#para-k2.-1" id="toc-para-k2.-1" class="nav-link" data-scroll-target="#para-k2.-1"><span class="header-section-number">4.2.2</span> Para K&gt;2.</a></li>
+  </ul></li>
+  <li><a href="#paso-3.-clasificación-de-individuos-gráfico-y-válidación." id="toc-paso-3.-clasificación-de-individuos-gráfico-y-válidación." class="nav-link" data-scroll-target="#paso-3.-clasificación-de-individuos-gráfico-y-válidación."><span class="header-section-number">4.3</span> PASO 3. Clasificación de individuos, gráfico y válidación.</a>
+  <ul class="collapse">
+  <li><a href="#para-k2.-2" id="toc-para-k2.-2" class="nav-link" data-scroll-target="#para-k2.-2"><span class="header-section-number">4.3.1</span> Para K=2.</a></li>
+  <li><a href="#para-k2.-3" id="toc-para-k2.-3" class="nav-link" data-scroll-target="#para-k2.-3"><span class="header-section-number">4.3.2</span> Para K&gt;2.</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#anexo-1.-determinación-de-las-variables-con-poder-discriminante." id="toc-anexo-1.-determinación-de-las-variables-con-poder-discriminante." class="nav-link" data-scroll-target="#anexo-1.-determinación-de-las-variables-con-poder-discriminante."><span class="header-section-number">5</span> ANEXO 1. Determinación de las variables con poder discriminante.</a></li>
+  <li><a href="#anexo-2.-discriminante-canónico." id="toc-anexo-2.-discriminante-canónico." class="nav-link" data-scroll-target="#anexo-2.-discriminante-canónico."><span class="header-section-number">6</span> ANEXO 2. DISCRIMINANTE CANÓNICO.</a>
+  <ul class="collapse">
+  <li><a href="#para-k2" id="toc-para-k2" class="nav-link" data-scroll-target="#para-k2"><span class="header-section-number">6.1</span> Para K=2</a></li>
+  <li><a href="#para-k2-1" id="toc-para-k2-1" class="nav-link" data-scroll-target="#para-k2-1"><span class="header-section-number">6.2</span> Para K&gt;2</a></li>
+  </ul></li>
+  <li><a href="#práctica." id="toc-práctica." class="nav-link" data-scroll-target="#práctica."><span class="header-section-number">7</span> PRÁCTICA.</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Análisis discriminante con RStudio</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kenedith. M. Méndez Gutiérrez </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 23, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<style type="text/css">
+  body{
+  font-family: Georgia;
+  font-size: 12pt;
+  text-align: justify;
+}
+  h1 {
+  color: #4C56AC;
+  font-size: 20pt;
+  font-family: Georgia;
+  text-align: left;
+  font-weight: blod;
+}
+  h2 {
+  color: #8A4CAC;
+  font-size:14pt;
+  font-family: Georgia;
+  text-align: left;
+  font-weight: blod;
+}
+  h3{ 
+  color: #black;
+  font-size:13pt;
+  font-family: Georgia;
+  text-align: left;
+  font-weight: blod;
+}
+</style>
+<section id="introducción" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1>
+<section id="qué-es" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="qué-es"><span class="header-section-number">1.1</span> ¿Qué es?</h2>
+<p>El análisis discriminante es un método estadístico multivariante de clasificación supervizada que permite evaluar la pertenencia y/o asignar nuevos individuos dentro de grupos previamente reconocidos o definidos a patir de un modelo matemático.</p>
+</section>
+<section id="cuáles-son-los-objetivos-del-análisis" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="cuáles-son-los-objetivos-del-análisis"><span class="header-section-number">1.2</span> ¿Cuáles son los objetivos del análisis?</h2>
+<ul>
+<li>explicar la pertenencia de cada individuo a uno u otro grupo preestablecido, en función de las variables perfil.</li>
+<li>cuantificar el peso de cada una de las variables del perfil de los grupos en la discriminación.</li>
+<li>predecir a qué grupo habrá de pertenecer un nuevo individuo del que únicamente se conoce su perfil de variables.</li>
+</ul>
+</section>
+<section id="qué-se-requiere-para-aplicar-el-análisis-a-una-matriz-de-datos-básica" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="qué-se-requiere-para-aplicar-el-análisis-a-una-matriz-de-datos-básica"><span class="header-section-number">1.3</span> ¿Qué se requiere para aplicar el análisis a una matriz de datos básica?</h2>
+<p>Para poder aplicar el análisis de importante:</p>
+<ol type="1">
+<li>las variables del perfil han de estar en escala continua y la variable dependiente ha de ser categórica.</li>
+<li>el número de unidades de estudio (UE) en los grupos ha de ser mayor a número de variables a considerar.</li>
+<li>verificar si el conjunto de variables del perfil se ajustan a la distribución normal p-variante para cada grupo.</li>
+<li>verificar se existe igualdad en las matrices de varianza - covarianza de los grupos a considerar.</li>
+</ol>
+</section>
+</section>
+<section id="materiales" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Materiales</h1>
+<ul>
+<li><p>Matriz de datos básica de la Guía: <a href="https://campusvirtual.unimagdalena.edu.co/d2l/common/viewFile.d2lfile/Content/L2NvbnRlbnQvZW5mb3JjZWQvMTE0ODI1LTM4RC0yMDQzODAzLTEtMjAyNDEvVGVldGgueGxzeA/Teeth.xlsx?ou=114825">Colibris</a></p></li>
+<li><p>Matriz de datos básica para la clase:</p>
+<ul>
+<li><p><strong><em>Teeth</em></strong>. Contiene información del número total de dientes de 66 mamíferos tanto en la mandíbula superior como en la inferior para cuatro grupos de acuerdo con funciones especializadas en, incisivos, caninos, premolares y molares. Esta información es de utilidad para proporciona una simple base numérica de clasificación de los mamíferos rastreando los cambios evolutivos.</p></li>
+<li><p><strong><em>Diatom:</em></strong> Contiene la información de la presencia/ausencia de diferentes especies de diatomeas de la familia Gomphonemataceae de plantas en 193 muestras de piedras recolectadas durante los meses de junio a septiembre de 1998 en diferentes ríos y arroyos franceses por parte del Cemagref y el Centre de Recherche Gabriel Lippman, los cuales posteriormente se analizaron los biofilm.</p></li>
+<li><p><strong><em>Texas_Turtle:</em></strong> La matriz de la hoja &lt;&lt;Data.D2&gt;&gt; en el archivo de Excel hacen parte del trabajo realizado por <span class="citation" data-cites="brown2020 brown2020a">[@brown2020; @brown2020a]</span> quienes tomaron muestras de poblaciones de tortugas de agua dulce en 66 sitios repartidos en diferentes regiones y condados de Texas, EE. UU. La hoja solo incluye las medidas morfologicas de ejemplares de Apalone spinifera emoryi capturados en el condado de Brewster.</p></li>
+</ul></li>
+<li><p><a href="https://campusvirtual.unimagdalena.edu.co/d2l/common/viewFile.d2lfile/Content/L2NvbnRlbnQvZW5mb3JjZWQvMTc0MzUxLTM4RC0zLTAyMDQzODAzLTEtMjAyNDIvU2NyaXB0X3FtZERMQS5xbWQ/Script_qmdDLA.qmd?ou=174351">ScriptLDA_qmd</a></p></li>
+</ul>
+</section>
+<section id="importe-los-datos" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Importe los datos</h1>
+<p>Para ejemplificar usaremos la base de datos <span style="color: #F84F00;">“Colibris”</span> que contiene diversas mediciones realizadas en 130 colibríes de la Sabana de Bogotá de 4 especies, en donde para cada individuo se midieron las siguientes variables:</p>
+<p><span style="align: center;"> <strong>Tabla 1.</strong></span></p>
+<p><em>Descripción de las variables</em> </p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Unidad de medición</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID</td>
+<td>ID del mamífero.</td>
+</tr>
+<tr class="even">
+<td>Sxo</td>
+<td>Sexo (M:Machos, F:Hembras).</td>
+</tr>
+<tr class="odd">
+<td>Abr</td>
+<td>Nombre abreviado de la especie.</td>
+</tr>
+<tr class="even">
+<td>Especie</td>
+<td>Nombre completo de la especie.</td>
+</tr>
+<tr class="odd">
+<td>Pso</td>
+<td>Peso de los individuos (g).</td>
+</tr>
+<tr class="even">
+<td>ExpC</td>
+<td>Culmen Expuesto (mm)</td>
+</tr>
+<tr class="odd">
+<td>TotC</td>
+<td>Culmen Total (mm)</td>
+</tr>
+<tr class="even">
+<td>AlLgo</td>
+<td>Largo del Ala (mm)</td>
+</tr>
+<tr class="odd">
+<td>AlAnc</td>
+<td>Ancho del Ala (mm)</td>
+</tr>
+<tr class="even">
+<td>AlArea</td>
+<td>Área del Ala (mm2)</td>
+</tr>
+<tr class="odd">
+<td>Grupo1</td>
+<td>Especie categorizada (1,2,3 y 4 )</td>
+</tr>
+<tr class="even">
+<td>Grupo2</td>
+<td>Especie:Sexo categorizadas (1,2,3,4,5,6,7,8)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>Cargaremos los datos en el ambiente de RStudio y luego cambiemos la naturaleza del objeto usando la función <code>"as.data.frame()"</code> y guardandolos en el objeto <strong>A</strong>.</p>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Colibris <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"D://Unimagdalena cursos//2021/2021-I//EMV 2021-I Tutoriales//Técnicas MV//Dataset_Guías//Colibris.xlsx"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>A<span class="ot">&lt;-</span><span class="fu">data.frame</span>(Colibris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="cómo-abordar-el-análisis" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> ¿Cómo abordar el análisis?</h1>
+<ol type="1">
+<li>Verifique los requerimientos.</li>
+<li>Efecute el algoritmo.</li>
+<li>Realice la clasificación de individuos, gráfique y valide.</li>
+<li>Determine que variables del perfil tienen poder discriminante.</li>
+</ol>
+<section id="paso-1.-verificación-de-los-requerimientos" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="paso-1.-verificación-de-los-requerimientos"><span class="header-section-number">4.1</span> PASO 1. Verificación de los requerimientos</h2>
+<section id="supuesto-de-normalidad-p---variante." class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="supuesto-de-normalidad-p---variante."><span class="header-section-number">4.1.1</span> Supuesto de normalidad p - variante.</h3>
+<p>Para verificar si las variables del perfil en cada grupo se ajustan a la distribución normal p-variante usaremos el test de normalidad de Mardia usando la función <code>"mvn()"</code> ubicada en la librería <code>"MVN"</code>.</p>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MVN)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo1<span class="sc">==</span><span class="st">"1"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test         Statistic           p value Result
+1 Mardia Skewness  42.6168724656156 0.906219255376073    YES
+2 Mardia Kurtosis -1.62721918187915 0.103690555204364    YES
+3             MVN              &lt;NA&gt;              &lt;NA&gt;    YES</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo1<span class="sc">==</span><span class="st">"2"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test         Statistic           p value Result
+1 Mardia Skewness   43.329557654361 0.892031335119474    YES
+2 Mardia Kurtosis -1.10553762976567 0.268926698432512    YES
+3             MVN              &lt;NA&gt;              &lt;NA&gt;    YES</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo1<span class="sc">==</span><span class="st">"3"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test          Statistic           p value Result
+1 Mardia Skewness   49.8583181511699  0.70518734092434    YES
+2 Mardia Kurtosis -0.544135715474491 0.586348084710675    YES
+3             MVN               &lt;NA&gt;              &lt;NA&gt;    YES</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo1<span class="sc">==</span><span class="st">"4"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test         Statistic            p value Result
+1 Mardia Skewness   26.852341897809  0.999662481237072    YES
+2 Mardia Kurtosis -2.21328788436421 0.0268778043711739     NO
+3             MVN              &lt;NA&gt;               &lt;NA&gt;     NO</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo2<span class="sc">==</span><span class="st">"1"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test         Statistic            p value Result
+1 Mardia Skewness  44.7200974652013  0.860605312358627    YES
+2 Mardia Kurtosis -1.68878989727816 0.0912597005733402    YES
+3             MVN              &lt;NA&gt;               &lt;NA&gt;    YES</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo2<span class="sc">==</span><span class="st">"2"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test         Statistic            p value Result
+1 Mardia Skewness  30.7802267824439  0.997555799588021    YES
+2 Mardia Kurtosis -1.71582730471158 0.0861936550766911    YES
+3             MVN              &lt;NA&gt;               &lt;NA&gt;    YES</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo2<span class="sc">==</span><span class="st">"3"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test          Statistic           p value Result
+1 Mardia Skewness    78.022142893232 0.027511862829837     NO
+2 Mardia Kurtosis -0.489004502559374 0.624838509175287    YES
+3             MVN               &lt;NA&gt;              &lt;NA&gt;     NO</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo2<span class="sc">==</span><span class="st">"4"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test         Statistic           p value Result
+1 Mardia Skewness  53.0512941687748 0.587199009492306    YES
+2 Mardia Kurtosis -1.62875372141619 0.103365165190648    YES
+3             MVN              &lt;NA&gt;              &lt;NA&gt;    YES</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo2<span class="sc">==</span><span class="st">"5"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test          Statistic           p value Result
+1 Mardia Skewness   64.6234248523869 0.200822670595858    YES
+2 Mardia Kurtosis -0.769185246839555 0.441783347293994    YES
+3             MVN               &lt;NA&gt;              &lt;NA&gt;    YES</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo2<span class="sc">==</span><span class="st">"6"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test         Statistic           p value Result
+1 Mardia Skewness  53.6327975839677 0.564992784544178    YES
+2 Mardia Kurtosis -1.45817085528391 0.144793454978019    YES
+3             MVN              &lt;NA&gt;              &lt;NA&gt;    YES</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo2<span class="sc">==</span><span class="st">"7"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test         Statistic            p value Result
+1 Mardia Skewness  37.1578157382268   0.97538910000349    YES
+2 Mardia Kurtosis -1.69829719674749 0.0894516835475543    YES
+3             MVN              &lt;NA&gt;               &lt;NA&gt;    YES</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mvn</span>(<span class="fu">subset</span>(A,Grupo2<span class="sc">==</span><span class="st">"8"</span>)[,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Test          Statistic            p value Result
+1 Mardia Skewness   79.9767092005015 0.0194209829084711     NO
+2 Mardia Kurtosis -0.516350717778944   0.60560947933185    YES
+3             MVN               &lt;NA&gt;               &lt;NA&gt;     NO</code></pre>
+</div>
+</div>
+<p>No posible verificar el ajuste a la distribución normal p-variante de las variables del perfil para la especie <em>Chalybura buffonii buffonii</em>, ya que a pesar de que el test de mardia no reflejo una asimetría significativa, <span class="math inline">\(\ 𝜒^{2}(56,N=36)=26.85, p&gt;0.05\)</span>, las observaciones presentan una variación significativa con respecto al vector del medias, <span class="math inline">\(\ z=-2.21, p=0.027\)</span>. Las hembras de está especie tampoco se ajustan a la distribución normal p-variante ni los machos de la especie <em>Adelomyia melanogenys cervina</em> Para el resto de grupos este supuesto se cumple. (Ver. tabla de reporte de resultados).</p>
+</section>
+<section id="supupesto-de-homogeneidad-en-las-matrices-de-varianza---covarianza" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="supupesto-de-homogeneidad-en-las-matrices-de-varianza---covarianza"><span class="header-section-number">4.1.2</span> Supupesto de homogeneidad en las matrices de varianza - covarianza</h3>
+<p>Para verificar la homogeneidad en las matrices de varianza - covarianza dado el resultado anterior consideraremos para ejemplificar los valores de la especie <em>Acestrura mulsant</em> por sexo como grupo y las hembras de las tres primeras especies. Lo primero para realizar un análisis discriminante con dos grupos y el segundo con tres. Para ello usaremos la función <code>"boxM()"</code> ubicada en la librería <code>"biotools"</code>. Según (Hahs-Vaughn, 2016) valores p menores a 0.001 se consideran significantes para la prueba. Una alternativa no parámetrica para esta prueba seria con la función <code>"betadisper()"</code> ubicada en la líbrería <code>"vegan"</code> . En aquellos casos donde este supuesto no se cumpla, el algoritmo correcto a ejecutar ha de ser un discriminante cuadrático en lugar de un discriminante lineal.</p>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biotools)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Acestrura mulsant por sexo</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxM</span>(<span class="at">data =</span> A[<span class="dv">1</span><span class="sc">:</span><span class="dv">49</span>,<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">grouping =</span> A[<span class="dv">1</span><span class="sc">:</span><span class="dv">49</span>,<span class="dv">12</span>]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Box's M-test for Homogeneity of Covariance Matrices
+
+data:  A[1:49, 5:10]
+Chi-Sq (approx.) = 19.028, df = 21, p-value = 0.5833</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Hembras de las 3 especies.</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxM</span>(<span class="at">data =</span> A[<span class="fu">c</span>(<span class="dv">25</span><span class="sc">:</span><span class="dv">49</span>,<span class="dv">61</span><span class="sc">:</span><span class="dv">70</span>,<span class="dv">84</span><span class="sc">:</span><span class="dv">94</span>),<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>],<span class="at">grouping =</span> A[<span class="fu">c</span>(<span class="dv">25</span><span class="sc">:</span><span class="dv">49</span>,<span class="dv">61</span><span class="sc">:</span><span class="dv">70</span>,<span class="dv">84</span><span class="sc">:</span><span class="dv">94</span>),<span class="dv">11</span>]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Box's M-test for Homogeneity of Covariance Matrices
+
+data:  A[c(25:49, 61:70, 84:94), 5:10]
+Chi-Sq (approx.) = 105.14, df = 42, p-value = 2.5e-07</code></pre>
+</div>
+</div>
+<p>El test M de box dejo evidencia que existe homocedasticidad entre las matriz de varianza - covarianza de las variables del perfil por sexos de la especie <em>Acestrura mulsant</em>, <span class="math inline">\(\ 𝜒^{2}(19)=19.03, p=0.58\)</span>. No fue posible con este test en base a la evidencia recolectada validar que la matrices de varianza - covarianza de las hembras de las tres primera especies fueran estadísticamente iguales, $\ 𝜒^{2}(42)=105.14, p&lt;0.001$, pero sí con la prueba no parámetrica, <span class="math inline">\(F(2,43)=0.359, p=0.7\)</span>. En ambos casos procederemos a hacer un análisis discriminante lineal.</p>
+</section>
+</section>
+<section id="paso-2.-efecución-del-algoritmo." class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="paso-2.-efecución-del-algoritmo."><span class="header-section-number">4.2</span> PASO 2. Efecución del algoritmo.</h2>
+<p>La función <code>"lda()"</code> ubicada en la librería <code>"MASS"</code> es útil para ejecutar el análisis discriminante lineal, mientras la que la función <code>"qda()"</code> es útil para ejecutar el discriminante cuadrático. Para ambas funciones la estructura de la línea de código es la misma. De forma general el análisis saca n grupo - 1 funciones discriminantes. En el caso del análisis discriminante cuadrático para dos grupos es posible obtener la función usando los fundamentos del álgebra de matrices.</p>
+<section id="para-k2." class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="para-k2."><span class="header-section-number">4.2.1</span> Para K=2.</h3>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>DL<span class="ot">&lt;-</span><span class="fu">lda</span>(Grupo2<span class="sc">~</span>Pso<span class="sc">+</span>ExpC<span class="sc">+</span>TotC<span class="sc">+</span>AlLgo<span class="sc">+</span>AlAnc<span class="sc">+</span>AlArea, <span class="at">data =</span> A[<span class="dv">1</span><span class="sc">:</span><span class="dv">49</span>,])<span class="co">#Discriminante lineal</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>DL</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+lda(Grupo2 ~ Pso + ExpC + TotC + AlLgo + AlAnc + AlArea, data = A[1:49, 
+    ])
+
+Prior probabilities of groups:
+        1         2 
+0.4897959 0.5102041 
+
+Group means:
+     Pso     ExpC   TotC    AlLgo    AlAnc   AlArea
+1 3.5875 16.97083 19.500 43.37083 13.80417 4.874375
+2 3.8240 17.97200 20.612 44.78800 14.44400 5.405880
+
+Coefficients of linear discriminants:
+              LD1
+Pso     1.0086760
+ExpC    0.8667790
+TotC   -0.1696751
+AlLgo  -0.3313001
+AlAnc  -1.4105951
+AlArea  7.0444041</code></pre>
+</div>
+</div>
+<p>Para discriminar entre machos y hembras de la especie <em>Acestrura mulsant</em> usando las variables aréa y ancho del ala y culmen expuesto, lo podemos hacer con la siguiente función discriminante <span class="math inline">\(\ W=0.84*(ExpC)+4.08*(AlArea)-1.26*(AlAnc)\)</span>. Ademas la salida nos muestra que los machos de está especie suelen tener menor dimensión de las alas y culmen expuesto más corto.</p>
+</section>
+<section id="para-k2.-1" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="para-k2.-1"><span class="header-section-number">4.2.2</span> Para K&gt;2.</h3>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>DL2<span class="ot">&lt;-</span><span class="fu">lda</span>(Grupo1<span class="sc">~</span>Pso<span class="sc">+</span>ExpC<span class="sc">+</span>TotC<span class="sc">+</span>AlLgo<span class="sc">+</span>AlAnc<span class="sc">+</span>AlArea, </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> A[<span class="fu">c</span>(<span class="dv">25</span><span class="sc">:</span><span class="dv">49</span>,<span class="dv">61</span><span class="sc">:</span><span class="dv">70</span>,<span class="dv">84</span><span class="sc">:</span><span class="dv">94</span>),])</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>DL2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+lda(Grupo1 ~ Pso + ExpC + TotC + AlLgo + AlAnc + AlArea, data = A[c(25:49, 
+    61:70, 84:94), ])
+
+Prior probabilities of groups:
+        1         2         3 
+0.5434783 0.2173913 0.2391304 
+
+Group means:
+       Pso   ExpC     TotC    AlLgo    AlAnc   AlArea
+1 3.824000 17.972 20.61200 44.78800 14.44400  5.40588
+2 3.770000 15.280 17.43000 58.16000 21.47000  9.83400
+3 7.463636 17.700 20.80909 80.65455 26.92727 17.70364
+
+Coefficients of linear discriminants:
+               LD1         LD2
+Pso    -0.03727483  1.96128135
+ExpC    0.06769325 -0.17266697
+TotC   -0.43471222  0.54690647
+AlLgo   0.22169448  0.05709618
+AlAnc   0.43183224 -1.86383129
+AlArea  1.49081396  1.22843308
+
+Proportion of trace:
+   LD1    LD2 
+0.9283 0.0717 </code></pre>
+</div>
+</div>
+<p><span style="color: #A6517A;"><strong>Responda:</strong></span> <span style="color: #A6517A;"><strong>¿Cuál son las funciones de discriminación y que diferencias puede observar entre las hembras.?.</strong></span></p>
+</section>
+</section>
+<section id="paso-3.-clasificación-de-individuos-gráfico-y-válidación." class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="paso-3.-clasificación-de-individuos-gráfico-y-válidación."><span class="header-section-number">4.3</span> PASO 3. Clasificación de individuos, gráfico y válidación.</h2>
+<p>La clasificación de los individuos se puede realizar utilizando el teorema de Bayes, que permite el cálculo de las probabilidades a posteriori a partir de estas probabilidades a priori y de la información muestral contenida en las puntuaciones discriminantes y así evaluar la probabilidad de pertnencia al a cada uno de los grupos para individuo, ó con las puntuaciónes de la función discriminante obtenida, cuyo criterio para clasificar es que si <span class="math inline">\(\ W_i&lt;0\)</span> el individuo se asigna al grupo 1, de lo contrario si <span class="math inline">\(\ W_i&gt;0\)</span>. Son dos enfoques diferente de evaluar la pertenencia a los grupos que arrojan tasas de error en la clasificación que no necesariamente coinciden. Con la función <code>"predict()"</code> se pueden obtener los suministros para ambos enfoque de clasificación para luego con una tabla de validación cruzada obtener la tasas de error en la clasificación. Modelos con tasa de errores cercanas a ceros se consideran buenos modelos predictivos.</p>
+<section id="para-k2.-2" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="para-k2.-2"><span class="header-section-number">4.3.1</span> Para K=2.</h3>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Predicciones.</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>P<span class="ot">&lt;-</span><span class="fu">predict</span>(DL)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>P<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>          LD1
+1  -1.2532038
+2  -1.8393431
+3  -1.0677434
+4  -2.9125954
+5  -3.2634473
+6  -1.4556262
+7  -1.6611573
+8  -1.0678436
+9  -0.9557383
+10 -2.1955478
+11 -1.8023942
+12 -0.8644086
+13 -1.2322965
+14 -0.6032149
+15 -1.4442463
+16 -1.4910220
+17 -2.2140410
+18 -2.7785348
+19 -0.6586079
+20 -1.2332581
+21 -3.5033544
+22 -2.0560275
+23 -0.9903948
+24 -1.7385594
+25  1.4243945
+26  2.2792825
+27  0.8264827
+28  0.3180581
+29  2.5854430
+30  2.4047784
+31  1.4558131
+32 -0.7160850
+33  1.4782435
+34  1.8199033
+35  2.6583127
+36  0.4688266
+37  1.8081336
+38  1.9985429
+39  2.0939221
+40  1.8278503
+41  3.6220313
+42  1.8878994
+43  1.9287595
+44  2.0158132
+45 -0.7182815
+46  4.0377331
+47  2.0565725
+48 -0.1949211
+49  0.9150981</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Sx<span class="ot">&lt;-</span><span class="fu">ifelse</span>(P<span class="sc">$</span>x<span class="sc">&lt;</span><span class="dv">0</span>,<span class="st">"M"</span>,<span class="st">"F"</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>DL.data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(A<span class="sc">$</span>Sxo[<span class="dv">1</span><span class="sc">:</span><span class="dv">49</span>], P<span class="sc">$</span>x,Sx)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(DL.data)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Grupo"</span>,<span class="st">"LD1"</span>,<span class="st">"Asignado"</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DL.data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Grupo       LD1 Asignado
+1     M -1.253204        M
+2     M -1.839343        M
+3     M -1.067743        M
+4     M -2.912595        M
+5     M -3.263447        M
+6     M -1.455626        M</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tabla de validación de la función</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(DL.data<span class="sc">$</span>Asignado, DL.data<span class="sc">$</span>Grupo, </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">dnn =</span> <span class="fu">c</span>(<span class="st">"Clase predicha"</span>, <span class="st">"Clase real"</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Clase real
+Clase predicha  F  M Sum
+           F   22  0  22
+           M    3 24  27
+           Sum 25 24  49</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tasa de Acierto</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DL.data<span class="sc">$</span>Asignado<span class="sc">==</span>DL.data<span class="sc">$</span>Grupo)<span class="sc">*</span><span class="dv">100</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 93.87755</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tasa de Error</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DL.data<span class="sc">$</span>Asignado<span class="sc">!=</span>DL.data<span class="sc">$</span>Grupo)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.122449</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Opciones gráficas.</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(DL.data, <span class="fu">aes</span>(<span class="at">x=</span> Grupo, <span class="at">y=</span>LD1, </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill=</span>Grupo)) <span class="sc">+</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_boxplot</span>(<span class="at">geom =</span> <span class="st">"errorbar"</span>,<span class="at">width=</span><span class="fl">0.1</span>)<span class="sc">+</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.3</span>, <span class="at">color=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Puntuación"</span>,<span class="at">x=</span><span class="st">"Sexo"</span>)<span class="sc">+</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">4.5</span>,<span class="dv">8</span>)<span class="sc">+</span><span class="fu">theme_test</span>()<span class="sc">+</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>)<span class="sc">+</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">n.breaks =</span> <span class="dv">10</span>)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>variable1<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">V1=</span>DL<span class="sc">$</span>scaling[,<span class="dv">1</span>],<span class="at">Var.name=</span><span class="fu">rownames</span>(DL<span class="sc">$</span>scaling))</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data =</span> variable1,<span class="fu">aes</span>(<span class="at">y=</span>V1, <span class="at">x=</span>Var.name))<span class="sc">+</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend=</span>V1),<span class="at">col=</span><span class="st">"blue"</span>,</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>,<span class="st">"cm"</span>)))<span class="sc">+</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"gray"</span>)<span class="sc">+</span></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y=</span><span class="fu">ifelse</span>(V1<span class="sc">&gt;</span><span class="dv">0</span>,V1<span class="fl">+0.5</span>,V1<span class="fl">-0.5</span>),</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">label=</span>Var.name))<span class="sc">+</span></span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">""</span>)<span class="sc">+</span><span class="fu">theme_test</span>()<span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">4.5</span>,<span class="dv">8</span>)<span class="sc">+</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"white"</span>),</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>())<span class="sc">+</span></span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">n.breaks =</span> <span class="dv">10</span>)</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>ggpubr<span class="sc">::</span><span class="fu">ggarrange</span>(p1,p2,</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>),</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Discriminate_RStudio_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="color: #A6517A;"><strong>Responda:</strong></span> <span style="color: #A6517A;"><strong>¿existen individuos mal clasificados?, ¿cuál es la tasa de error de la clasificación?, ¿Cuáles son las variables que aportan a la diferenciación y de que forma?</strong></span></p>
+</section>
+<section id="para-k2.-3" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="para-k2.-3"><span class="header-section-number">4.3.2</span> Para K&gt;2.</h3>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Predicciones.</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>Pq<span class="ot">&lt;-</span><span class="fu">predict</span>(DL2)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>DL2.data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(A<span class="sc">$</span>Abr[<span class="fu">c</span>(<span class="dv">25</span><span class="sc">:</span><span class="dv">49</span>,<span class="dv">61</span><span class="sc">:</span><span class="dv">70</span>,<span class="dv">84</span><span class="sc">:</span><span class="dv">94</span>)],A<span class="sc">$</span>Grupo1[<span class="fu">c</span>(<span class="dv">25</span><span class="sc">:</span><span class="dv">49</span>,<span class="dv">61</span><span class="sc">:</span><span class="dv">70</span>,<span class="dv">84</span><span class="sc">:</span><span class="dv">94</span>)],Pq<span class="sc">$</span>x,Pq<span class="sc">$</span>class)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(DL2.data)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Especie"</span>,<span class="st">"Grupo"</span>,<span class="st">"LD1"</span>,<span class="st">"LD2"</span>,<span class="st">"Asignado"</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DL2.data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Especie Grupo        LD1      LD2 Asignado
+25 Acemuls     1 -10.356262 2.113036        1
+26 Acemuls     1 -11.077727 3.068913        1
+27 Acemuls     1 -10.851606 1.541441        1
+28 Acemuls     1 -11.631603 1.677461        1
+29 Acemuls     1 -11.585199 3.161746        1
+30 Acemuls     1  -9.737211 1.070847        1</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tabla de validación de la función</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(DL2.data<span class="sc">$</span>Asignado, DL2.data<span class="sc">$</span>Grupo, </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">dnn =</span> <span class="fu">c</span>(<span class="st">"Clase predicha"</span>, <span class="st">"Clase real"</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Clase real
+Clase predicha  1  2  3 Sum
+           1   25  0  0  25
+           2    0 10  0  10
+           3    0  0 11  11
+           Sum 25 10 11  46</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tasa de Acierto</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DL2.data<span class="sc">$</span>Asignado<span class="sc">==</span>DL2.data<span class="sc">$</span>Grupo)<span class="sc">*</span><span class="dv">100</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tasa de Error</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DL2.data<span class="sc">$</span>Asignado<span class="sc">!=</span>DL2.data<span class="sc">$</span>Grupo)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Opciones gráficas.</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>variable2<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">V1=</span>DL2<span class="sc">$</span>scaling[,<span class="dv">1</span>], <span class="at">V2=</span>DL2<span class="sc">$</span>scaling[,<span class="dv">2</span>],</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Var.name=</span><span class="fu">rownames</span>(DL<span class="sc">$</span>scaling))</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> DL2.data, <span class="fu">aes</span>(<span class="at">x=</span>LD1, <span class="at">y=</span>LD2))<span class="sc">+</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Especie,<span class="at">color=</span>Especie))<span class="sc">+</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype=</span><span class="dv">2</span>,<span class="at">color=</span><span class="st">"gray"</span>)<span class="sc">+</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">"gray"</span>)<span class="sc">+</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ellipse</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Especie,<span class="at">color=</span>Especie),</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">geom =</span> <span class="st">"polygon"</span>,<span class="at">type =</span> <span class="st">"t"</span>,<span class="at">alpha=</span><span class="fl">0.1</span>)<span class="sc">+</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Dark2"</span>)<span class="sc">+</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette=</span><span class="st">"Dark2"</span>)<span class="sc">+</span></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"top"</span>)<span class="sc">+</span></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> variable2, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, </span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">xend=</span>V1<span class="sc">*</span><span class="dv">10</span>, <span class="at">yend=</span>V2<span class="sc">*</span><span class="dv">5</span>),</span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="st">"black"</span>,<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>,<span class="st">"cm"</span>)))<span class="sc">+</span></span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>variable2, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> V1<span class="sc">*</span><span class="dv">10</span><span class="fl">+0.5</span>,<span class="at">y=</span>V2<span class="sc">*</span><span class="dv">5</span><span class="fl">+0.5</span>, </span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">label=</span>Var.name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Discriminate_RStudio_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="anexo-1.-determinación-de-las-variables-con-poder-discriminante." class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> ANEXO 1. Determinación de las variables con poder discriminante.</h1>
+<p>Antes de ejecutar el algoritmo probaremos si todas las variables consideradas tienen poder discriminate usando la función <code>"greedy.wilks()"</code> ubicada en la librería <code>"klaR"</code>. Esta función usa el estadístico <strong>Lambda de Wilks</strong> como criterio que mide las desviaciones que se producen dentro de cada grupo respecto a las desviaciones totales sin distinción de grupos. Si su valor es pequeño, próximo a 0, la variabilidad total será debida a las diferencias entre grupos y, con ello, las variables con un Lambda de Wilks pequeño serán las que más diferencian, discriminan, a los grupos. Si por el contrario, su valor se aproxima a 1, los grupos estarán mezclados y, por ello, las variables independientes con un Lambda grande carecen de capacidad discriminante.</p>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(klaR)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">greedy.wilks</span>(Grupo2<span class="sc">~</span>Pso<span class="sc">+</span>ExpC<span class="sc">+</span>TotC<span class="sc">+</span>AlLgo<span class="sc">+</span>AlAnc<span class="sc">+</span>AlArea,<span class="at">data =</span> A[<span class="dv">1</span><span class="sc">:</span><span class="dv">49</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Formula containing included variables: 
+
+Grupo2 ~ AlArea + ExpC + AlAnc
+&lt;environment: 0x000002c939805eb0&gt;
+
+
+Values calculated in each step of the selection procedure: 
+
+    vars Wilks.lambda F.statistics.overall p.value.overall F.statistics.diff
+1 AlArea    0.3771434             77.62104    1.618352e-11         77.621037
+2   ExpC    0.2976780             54.26469    7.873644e-13         12.279734
+3  AlAnc    0.2791664             38.73139    1.585095e-12          2.983959
+  p.value.diff
+1 1.618352e-11
+2 1.016954e-03
+3 9.080299e-02</code></pre>
+</div>
+</div>
+<p><strong>Ej de reporte de la salida:</strong> es posible distinguir entre machos y hembras de la especie <em>Acestrura mulsant</em> usando solamente tres variables, el aréa del ala, <span class="math inline">\(\Lambda=0.377\)</span>, el culmen expuesto, $\Lambda=0.298$, y el ancho del ala , <span class="math inline">\(\Lambda=0.27\)</span>, al tener un poder discriminate significativo, <span class="math inline">\(\ F(1,47)=77.62,p&lt;0.05\)</span>, <span class="math inline">\(\ F(1,47)=54.26,p&lt;0.05\)</span>, y <span class="math inline">\(\ F(1,47)=38.73,p&lt;0.05\)</span>, respectivamente.</p>
+<p><span style="color: #A6517A;"><strong>Responda:</strong></span> <span style="color: #A6517A;"><strong>¿Qué variables logran distinguir a las hembras de las tres primeras especies?.</strong></span></p>
+</section>
+<section id="anexo-2.-discriminante-canónico." class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> ANEXO 2. DISCRIMINANTE CANÓNICO.</h1>
+<p>Es una análisis en el que la clasificación se hace basado en técnicas de redución de dimensiones (correlación canónica y de componentes principales) para sintetizar la mayor parte de la información contenida en sus datos en pocos ejes de una tabla de datos excesivamente grande con un elevado número de variables, denominado análisis discriminante canónico.</p>
+<section id="para-k2" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="para-k2"><span class="header-section-number">6.1</span> Para K=2</h2>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(candisc)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>Acemul<span class="ot">&lt;-</span>A[<span class="dv">1</span><span class="sc">:</span><span class="dv">49</span>,]</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">manova</span>(<span class="fu">cbind</span>(Pso,ExpC,TotC,AlLgo,AlAnc,AlArea)<span class="sc">~</span>Sxo, <span class="at">data=</span>Acemul)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>dis_ca<span class="ot">&lt;-</span><span class="fu">candisc</span>(model)</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dis_ca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Canonical Discriminant Analysis for Sxo:
+
+   CanRsq Eigenvalue Difference Percent Cumulative
+1 0.73819     2.8196                100        100
+
+Class means:
+
+[1]  1.6113 -1.6784
+
+ std coefficients:
+     Pso     ExpC     TotC    AlLgo    AlAnc   AlArea 
+ 0.19722  0.56571 -0.14279 -0.30646 -0.55559  1.48710 </code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>dis_ca<span class="sc">$</span>coeffs.raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Can1
+Pso     1.0086760
+ExpC    0.8667790
+TotC   -0.1696751
+AlLgo  -0.3313001
+AlAnc  -1.4105951
+AlArea  7.0444041</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>dis_ca<span class="sc">$</span>structure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Can1
+Pso    0.6114303
+ExpC   0.7175340
+TotC   0.6508053
+AlLgo  0.7169676
+AlAnc  0.7429092
+AlArea 0.9185651</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dis_ca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Discriminate_RStudio_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>Puntuacion_ca<span class="ot">&lt;-</span>dis_ca<span class="sc">$</span>scores</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>Puntuacion_ca<span class="sc">$</span>grupo.Cl<span class="ot">&lt;-</span><span class="fu">as.factor</span>(<span class="fu">ifelse</span>(Puntuacion_ca<span class="sc">$</span>Can1<span class="sc">&gt;</span><span class="dv">0</span>,<span class="st">"F"</span>, <span class="st">"M"</span>))</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>Tb1<span class="ot">&lt;-</span><span class="fu">addmargins</span>(<span class="fu">table</span>(Puntuacion_ca<span class="sc">$</span>Sxo,Puntuacion_ca<span class="sc">$</span>grupo.Cl,</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">dnn =</span> <span class="fu">c</span>(<span class="st">"Clase real"</span>, <span class="st">"Clase predicha"</span>)))</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>Tb1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Clase predicha
+Clase real  F  M Sum
+       F   22  3  25
+       M    0 24  24
+       Sum 22 27  49</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tasa de Acierto</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Puntuacion_ca<span class="sc">$</span>Sxo<span class="sc">==</span>Puntuacion_ca<span class="sc">$</span>grupo.Cl)<span class="sc">*</span><span class="dv">100</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 93.87755</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tasa de Error</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Puntuacion_ca<span class="sc">$</span>Sxo<span class="sc">!=</span>Puntuacion_ca<span class="sc">$</span>grupo.Cl)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.122449</code></pre>
+</div>
+</div>
+</section>
+<section id="para-k2-1" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="para-k2-1"><span class="header-section-number">6.2</span> Para K&gt;2</h2>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(candisc)</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>Hembras<span class="ot">&lt;-</span>A[<span class="fu">c</span>(<span class="dv">25</span><span class="sc">:</span><span class="dv">49</span>,<span class="dv">61</span><span class="sc">:</span><span class="dv">70</span>,<span class="dv">84</span><span class="sc">:</span><span class="dv">94</span>),]</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>model1<span class="ot">&lt;-</span><span class="fu">manova</span>(<span class="fu">cbind</span>(Pso,ExpC,TotC,AlLgo,AlAnc,AlArea)<span class="sc">~</span>Abr, <span class="at">data=</span>Hembras)</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>dis_ca1<span class="ot">&lt;-</span><span class="fu">candisc</span>(model1)</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dis_ca1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Canonical Discriminant Analysis for Abr:
+
+   CanRsq Eigenvalue Difference Percent Cumulative
+1 0.99444    178.763     164.95 92.8255     92.825
+2 0.93251     13.817     164.95  7.1745    100.000
+
+Class means:
+
+            Can1    Can2
+Acemuls  10.5180 -1.5161
+Ademece  -3.2851  6.7574
+Boiflav -20.9180 -2.6973
+
+ std coefficients:
+            Can1      Can2
+Pso     0.011548 -0.607611
+ExpC   -0.045476  0.115997
+TotC    0.415993 -0.523356
+AlLgo  -0.318187 -0.081947
+AlAnc  -0.263781  1.138503
+AlArea -0.653506 -0.538490</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dis_ca1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Discriminate_RStudio_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>Puntuacion_ca1<span class="ot">&lt;-</span>dis_ca1<span class="sc">$</span>scores</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>Puntuacion_ca1<span class="sc">$</span>grupo.Cl<span class="ot">&lt;-</span><span class="fu">as.factor</span>(</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(Puntuacion_ca1<span class="sc">$</span>Can1<span class="sc">&gt;</span><span class="dv">0</span> <span class="sc">&amp;</span> Puntuacion_ca1<span class="sc">$</span>Can2<span class="sc">&lt;</span><span class="dv">0</span>,<span class="st">"Acemuls"</span>, <span class="fu">ifelse</span>(Puntuacion_ca1<span class="sc">$</span>Can1<span class="sc">&lt;</span><span class="dv">0</span><span class="sc">&amp;</span>Puntuacion_ca1<span class="sc">$</span>Can2<span class="sc">&gt;</span><span class="dv">0</span>,<span class="st">"Ademece"</span>,<span class="st">"Boiflav"</span>)))</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>Tb2<span class="ot">&lt;-</span><span class="fu">addmargins</span>(<span class="fu">table</span>(Puntuacion_ca1<span class="sc">$</span>Abr,Puntuacion_ca1<span class="sc">$</span>grupo.Cl,</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">dnn =</span> <span class="fu">c</span>(<span class="st">"Clase real"</span>, <span class="st">"Clase predicha"</span>)))</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>Tb2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Clase predicha
+Clase real Acemuls Ademece Boiflav Sum
+   Acemuls      25       0       0  25
+   Ademece       0      10       0  10
+   Boiflav       0       1      10  11
+   Sum          25      11      10  46</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tasa de Acierto</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Puntuacion_ca1<span class="sc">$</span>Abr<span class="sc">==</span>Puntuacion_ca1<span class="sc">$</span>grupo.Cl)<span class="sc">*</span><span class="dv">100</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 97.82609</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Tasa de Error</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Puntuacion_ca1<span class="sc">$</span>Abr<span class="sc">!=</span>Puntuacion_ca1<span class="sc">$</span>grupo.Cl)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.173913</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="práctica." class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> PRÁCTICA.</h1>
+<p>Replique a manera de práctica el análisis discriminate usando la información de otra especie para obtener una función que permita distinguir entre machos y hembras, y responda a:</p>
+<ol type="1">
+<li>¿qué algoritmo es el apropiado para establecer el modelo de clasificación?</li>
+<li>¿hay evidencia de linealidad y multicolinealidad al 100% en las variables del perfil?</li>
+<li>¿qué variables tienen poder discriminante?</li>
+<li>¿están todos los individuos bien clasificados?</li>
+<li>¿cuál es el modelo y que tasa de error tiene?</li>
+</ol>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
