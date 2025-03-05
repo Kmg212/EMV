@@ -8,7 +8,7 @@
 <link href="Presentación_EDMV_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Presentación_EDMV_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Presentación_EDMV_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="K. Méndez - Gutiérrez">
   <title>Exploración de datos MV con RStudio</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -59,41 +59,41 @@
       }
     pre.numberSource { margin-left: 3em;  padding-left: 4px; }
     div.sourceCode
-      { color: #f8f8f2; background-color: #282a36; }
+      { color: #b2b2b2; background-color: #000000; }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #ff79c6; } /* Annotation */
-    code span.at { color: #ff79c6; } /* Attribute */
-    code span.bn { color: #bd93f9; } /* BaseN */
-    code span.bu { color: #8be9fd; } /* BuiltIn */
-    code span.cf { color: #ff79c6; } /* ControlFlow */
-    code span.ch { color: #f1fa8c; } /* Char */
-    code span.cn { color: #bd93f9; font-weight: bold; } /* Constant */
-    code span.co { color: #6272a4; } /* Comment */
-    code span.cv { color: #8be9fd; } /* CommentVar */
-    code span.do { color: #ffb86c; } /* Documentation */
-    code span.dt { color: #8be9fd; font-style: italic; } /* DataType */
-    code span.dv { color: #bd93f9; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #8be9fd; } /* Extension */
-    code span.fl { color: #bd93f9; } /* Float */
-    code span.fu { color: #50fa7b; } /* Function */
-    code span.im { color: #ff79c6; } /* Import */
-    code span.in { color: #f1fa8c; } /* Information */
-    code span.kw { color: #ff79c6; } /* Keyword */
-    code span.op { color: #f8f8f2; } /* Operator */
-    code span.ot { color: #50fa7b; } /* Other */
-    code span.pp { color: #ff79c6; } /* Preprocessor */
-    code span.re { color: #8be9fd; } /* RegionMarker */
-    code span.sc { color: #ff79c6; } /* SpecialChar */
-    code span.ss { color: #f1fa8c; } /* SpecialString */
-    code span.st { color: #f1fa8c; } /* String */
-    code span.va { color: #8be9fd; } /* Variable */
-    code span.vs { color: #f1fa8c; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
+    code span { color: #b2b2b2; } /* Normal */
+    code span.al { color: #ff0000; background-color: #3f0000; font-weight: bold; } /* Alert */
+    code span.an { color: #ff00ff; } /* Annotation */
+    code span.at { color: #ffffaf; } /* Attribute */
+    code span.bn { color: #ff8b8b; } /* BaseN */
+    code span.bu { color: #87ffaf; font-weight: bold; } /* BuiltIn */
+    code span.cf { color: #ffff54; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #ff5454; } /* Char */
+    code span.cn { color: #af7f00; font-weight: bold; } /* Constant */
+    code span.co { color: #54ffff; } /* Comment */
+    code span.cv { color: #0095ff; } /* CommentVar */
+    code span.do { color: #e0ffff; } /* Documentation */
+    code span.dt { color: #ffff54; } /* DataType */
+    code span.dv { color: #ff8b8b; } /* DecVal */
+    code span.er { color: #ff5500; text-decoration: underline; } /* Error */
+    code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+    code span.fl { color: #ff8b8b; } /* Float */
+    code span.fu { color: #cd00cd; } /* Function */
+    code span.im { color: #ff54ff; } /* Import */
+    code span.in { color: #ffaa00; } /* Information */
+    code span.kw { color: #5fd7ff; font-weight: bold; } /* Keyword */
+    code span.op { color: #b2b2b2; } /* Operator */
+    code span.ot { color: #54ff54; } /* Other */
+    code span.pp { color: #87ffaf; } /* Preprocessor */
+    code span.re { color: #0095ff; background-color: #22226d; } /* RegionMarker */
+    code span.sc { color: #0095ff; } /* SpecialChar */
+    code span.ss { color: #ff5500; } /* SpecialString */
+    code span.st { color: #ff54ff; } /* String */
+    code span.va { color: #06989a; } /* Variable */
+    code span.vs { color: #ff54ff; } /* VerbatimString */
+    code span.wa { color: #ff0000; } /* Warning */
   </style>
   <link rel="stylesheet" href="Presentación_EDMV_files/libs/revealjs/dist/theme/quarto.css">
   <link href="Presentación_EDMV_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -413,14 +414,13 @@ K. Méndez - Gutiérrez
 <section id="variables." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Variables.</h2>
 <p><span style="align: center;">Tabla 1. Descripción de las variables.</span></p>
-
 <style scoped="">
 table {
   font-size: 65%;
   align-items: left;
 }
 </style>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th>Variables</th>
@@ -479,30 +479,26 @@ table {
 <section id="librerías-requeridas." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Librerías requeridas.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb1-1" class="hljs-ln-code"><a href="#cb1-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-2" class="hljs-ln-code"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3" class="hljs-ln-code"><a href="#cb1-3"></a><span class="fu">library</span>(MVN)</span>
-<span id="cb1-4" class="hljs-ln-code"><a href="#cb1-4"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5" class="hljs-ln-code"><a href="#cb1-5"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb1-6" class="hljs-ln-code"><a href="#cb1-6"></a><span class="fu">library</span>(reshape)</span>
-<span id="cb1-7" class="hljs-ln-code"><a href="#cb1-7"></a><span class="fu">library</span>(ggExtra)</span>
-<span id="cb1-8" class="hljs-ln-code"><a href="#cb1-8"></a><span class="fu">library</span>(ggridges)</span>
-<span id="cb1-9" class="hljs-ln-code"><a href="#cb1-9"></a><span class="fu">library</span>(ggmosaic)</span>
-<span id="cb1-10" class="hljs-ln-code"><a href="#cb1-10"></a><span class="fu">library</span>(lattice)</span>
-<span id="cb1-11" class="hljs-ln-code"><a href="#cb1-11"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-12" class="hljs-ln-code"><a href="#cb1-12"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb1-13" class="hljs-ln-code"><a href="#cb1-13"></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment" data-layout-align="center">
-
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb1-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(MVN)</span>
+<span id="cb1-4" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb1-6" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggExtra)</span>
+<span id="cb1-7" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb1-8" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggmosaic)</span>
+<span id="cb1-9" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(lattice)</span>
+<span id="cb1-10" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(car)</span>
+<span id="cb1-11" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(GGally)</span>
+<span id="cb1-12" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="importar-los-datos." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Importar los datos.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb2-1" class="hljs-ln-code"><a href="#cb2-1"></a>A<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"D:/Unimagdalena cursos/2021/2021-I/EMV 2021-I Tutoriales/Exploración/Microalgas.xlsx"</span>)</span>
-<span id="cb2-2" class="hljs-ln-code"><a href="#cb2-2"></a>A<span class="sc">$</span>Tributario<span class="ot">&lt;-</span><span class="fu">factor</span>(A<span class="sc">$</span>Tributario)</span>
-<span id="cb2-3" class="hljs-ln-code"><a href="#cb2-3"></a><span class="fu">str</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb2-1" class="hljs-ln-code"><a href=""></a>A<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"D:/Unimagdalena cursos/2021/2021-I/EMV 2021-I Tutoriales/Exploración/Microalgas.xlsx"</span>)</span>
+<span id="cb2-2" class="hljs-ln-code"><a href=""></a>A<span class="sc">$</span>Tributario<span class="ot">&lt;-</span><span class="fu">factor</span>(A<span class="sc">$</span>Tributario)</span>
+<span id="cb2-3" class="hljs-ln-code"><a href=""></a><span class="fu">str</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -549,14 +545,13 @@ table {
 <section id="descripción-de-una-variable-cuantitativa-por-grupo." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">1. Descripción de una variable cuantitativa por grupo.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb4-1" class="hljs-ln-code"><a href="#cb4-1"></a>A <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2" class="hljs-ln-code"><a href="#cb4-2"></a>  <span class="fu">group_by</span>(Tributario) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-3" class="hljs-ln-code"><a href="#cb4-3"></a>  <span class="fu">summarise</span>(<span class="at">M=</span><span class="fu">mean</span>(Amonio),</span>
-<span id="cb4-4" class="hljs-ln-code"><a href="#cb4-4"></a>            <span class="at">SD=</span><span class="fu">sd</span>(Amonio),</span>
-<span id="cb4-5" class="hljs-ln-code"><a href="#cb4-5"></a>            <span class="at">Mdn=</span><span class="fu">median</span>(Amonio),</span>
-<span id="cb4-6" class="hljs-ln-code"><a href="#cb4-6"></a>            <span class="at">Q1=</span><span class="fu">quantile</span>(Amonio,<span class="at">probs =</span><span class="fl">0.25</span>),</span>
-<span id="cb4-7" class="hljs-ln-code"><a href="#cb4-7"></a>            <span class="at">Q3=</span><span class="fu">quantile</span>(Amonio,<span class="at">probs =</span> <span class="fl">0.75</span>)</span>
-<span id="cb4-8" class="hljs-ln-code"><a href="#cb4-8"></a>            )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb4-1" class="hljs-ln-code"><a href=""></a>A <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">group_by</span>(Tributario) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">M=</span><span class="fu">mean</span>(Amonio),</span>
+<span id="cb4-4" class="hljs-ln-code"><a href=""></a>            <span class="at">SD=</span><span class="fu">sd</span>(Amonio),</span>
+<span id="cb4-5" class="hljs-ln-code"><a href=""></a>            <span class="at">Mdn=</span><span class="fu">median</span>(Amonio),</span>
+<span id="cb4-6" class="hljs-ln-code"><a href=""></a>            <span class="at">Q1=</span><span class="fu">quantile</span>(Amonio,<span class="at">probs =</span><span class="fl">0.25</span>),</span>
+<span id="cb4-7" class="hljs-ln-code"><a href=""></a>            <span class="at">Q3=</span><span class="fu">quantile</span>(Amonio,<span class="at">probs =</span> <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -572,7 +567,7 @@ table {
 <section id="descripción-de-varias-variables-cuantitativas-por-grupo." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">2. Descripción de varias variables cuantitativas por grupo.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a href="#cb6-1"></a><span class="fu">mvn</span>(<span class="at">data =</span> A[,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="at">subset =</span> <span class="st">"Tributario"</span>)<span class="sc">$</span>Descriptives</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a href=""></a><span class="fu">mvn</span>(<span class="at">data =</span> A[,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="at">subset =</span> <span class="st">"Tributario"</span>)<span class="sc">$</span>Descriptives</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -627,13 +622,13 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <section id="gráfico-de-barras." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Gráfico de Barras.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|6|7|8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb8-1" class="hljs-ln-code"><a href="#cb8-1"></a><span class="fu">melt</span>(<span class="fu">data.frame</span>(A[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">24</span>)] <span class="sc">%&gt;%</span></span>
-<span id="cb8-2" class="hljs-ln-code"><a href="#cb8-2"></a>                      <span class="fu">group_by</span>(Tributario)))<span class="sc">%&gt;%</span></span>
-<span id="cb8-3" class="hljs-ln-code"><a href="#cb8-3"></a>  <span class="fu">group_by</span>(Tributario,variable) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-4" class="hljs-ln-code"><a href="#cb8-4"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">sum</span>(value),<span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-5" class="hljs-ln-code"><a href="#cb8-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder</span>(variable,n),n,<span class="at">fill=</span>Tributario))<span class="sc">+</span></span>
-<span id="cb8-6" class="hljs-ln-code"><a href="#cb8-6"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb8-7" class="hljs-ln-code"><a href="#cb8-7"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Abundancia (N° de individuos)"</span>,<span class="at">x=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|6|7|8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb8-1" class="hljs-ln-code"><a href=""></a>A <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">31</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="dv">1</span>,<span class="at">names_to =</span> <span class="st">"variable"</span>,<span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">group_by</span>(Tributario,variable) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">sum</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">reorder</span>(variable,n),n,<span class="at">fill=</span>Tributario))<span class="sc">+</span></span>
+<span id="cb8-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_col</span>()<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb8-7" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Abundancia (N° de individuos)"</span>,<span class="at">x=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -641,28 +636,53 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div></section><section id="gráfico-de-burbujas." class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Gráfico de Burbujas.</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="|6|7|8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb9-1" class="hljs-ln-code"><a href=""></a>A <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">31</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">names_to =</span> <span class="st">"variable"</span>,<span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">group_by</span>(Tributario,pH,variable) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">sum</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(variable,pH,<span class="at">fill=</span>Tributario, <span class="at">color=</span>Tributario,<span class="at">size=</span>n))<span class="sc">+</span></span>
+<span id="cb9-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>,<span class="at">alpha =</span> <span class="fl">0.6</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">theme_linedraw</span>()<span class="sc">+</span></span>
+<span id="cb9-7" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb9-8" class="hljs-ln-code"><a href=""></a>        <span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb9-9" class="hljs-ln-code"><a href=""></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_line</span>(<span class="at">color=</span><span class="st">"gray"</span>))<span class="sc">+</span></span>
+<span id="cb9-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"pH"</span>,<span class="at">x=</span><span class="st">""</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">n.breaks =</span> <span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb9-11" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_size</span>(<span class="at">name =</span> <span class="st">"Abundancia"</span>, <span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+</section>
+<section id="gráfico-de-burbujas.-output" class="slide level2 output-location-slide"><h2>Gráfico de Burbujas.</h2><div class="cell output-location-slide" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div></section><section id="gráfico-de-mosaico." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Gráfico de mosaico.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="|4|5|6|7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb9-1" class="hljs-ln-code"><a href="#cb9-1"></a><span class="fu">melt</span>(<span class="fu">data.frame</span>(A[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">24</span>)] <span class="sc">%&gt;%</span></span>
-<span id="cb9-2" class="hljs-ln-code"><a href="#cb9-2"></a>                      <span class="fu">group_by</span>(Tributario)))<span class="sc">%&gt;%</span> </span>
-<span id="cb9-3" class="hljs-ln-code"><a href="#cb9-3"></a>  <span class="fu">group_by</span>(Tributario,variable) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-4" class="hljs-ln-code"><a href="#cb9-4"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">sum</span>(value),<span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-5" class="hljs-ln-code"><a href="#cb9-5"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb9-6" class="hljs-ln-code"><a href="#cb9-6"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Tributario),<span class="at">fill=</span>variable,<span class="at">weight =</span> n))<span class="sc">+</span></span>
-<span id="cb9-7" class="hljs-ln-code"><a href="#cb9-7"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)<span class="sc">+</span></span>
-<span id="cb9-8" class="hljs-ln-code"><a href="#cb9-8"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="|4|5|6|7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb10-1" class="hljs-ln-code"><a href=""></a>A <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">31</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="dv">1</span>,<span class="at">names_to =</span> <span class="st">"variable"</span>,<span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">group_by</span>(Tributario,variable) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">sum</span>(value),<span class="at">.groups=</span><span class="st">"keep"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb10-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Tributario),<span class="at">fill=</span>variable,<span class="at">weight =</span> n))<span class="sc">+</span></span>
+<span id="cb10-7" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)<span class="sc">+</span></span>
+<span id="cb10-8" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section><section id="gráfico-de-mosaico.-output" class="slide level2 output-location-slide"><h2>Gráfico de mosaico.</h2><div class="cell output-location-slide" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -675,13 +695,13 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <section id="histogramas." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Histogramas.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="|2|3|6"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb10-1" class="hljs-ln-code"><a href="#cb10-1"></a><span class="fu">ggplot</span>(A,<span class="fu">aes</span>(<span class="at">x =</span> Cocconeis,<span class="at">fill=</span>Tributario))<span class="sc">+</span></span>
-<span id="cb10-2" class="hljs-ln-code"><a href="#cb10-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"black"</span>,</span>
-<span id="cb10-3" class="hljs-ln-code"><a href="#cb10-3"></a>                 <span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">position=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb10-4" class="hljs-ln-code"><a href="#cb10-4"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Tributario,<span class="at">nrow =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb10-5" class="hljs-ln-code"><a href="#cb10-5"></a>  <span class="fu">theme_pubr</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
-<span id="cb10-6" class="hljs-ln-code"><a href="#cb10-6"></a>                     <span class="at">strip.text =</span> <span class="fu">element_blank</span>())<span class="sc">+</span></span>
-<span id="cb10-7" class="hljs-ln-code"><a href="#cb10-7"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Abundancia (N° de individuos)"</span>, <span class="at">y=</span><span class="st">"Cantidad de muestras"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="|2|3|6"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb11-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(A,<span class="fu">aes</span>(<span class="at">x =</span> Cocconeis,<span class="at">fill=</span>Tributario))<span class="sc">+</span></span>
+<span id="cb11-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span><span class="dv">7</span>, <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb11-3" class="hljs-ln-code"><a href=""></a>                 <span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">position=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb11-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Tributario,<span class="at">nrow =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb11-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme_pubr</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
+<span id="cb11-6" class="hljs-ln-code"><a href=""></a>                     <span class="at">strip.text =</span> <span class="fu">element_blank</span>())<span class="sc">+</span></span>
+<span id="cb11-7" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Abundancia (N° de individuos)"</span>, <span class="at">y=</span><span class="st">"Cantidad de muestras"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -689,18 +709,18 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-7-1.png" width="480"></p>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
 </figure>
 </div>
 </div>
 </div></section><section id="densidades." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Densidades.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb11-1" class="hljs-ln-code"><a href="#cb11-1"></a><span class="fu">ggplot</span>(A, <span class="fu">aes</span>(<span class="at">x =</span> Nitrito, <span class="at">y =</span> Tributario)) <span class="sc">+</span></span>
-<span id="cb11-2" class="hljs-ln-code"><a href="#cb11-2"></a>  <span class="fu">geom_density_ridges</span>(<span class="fu">aes</span>(<span class="at">fill =</span> Tributario)) <span class="sc">+</span></span>
-<span id="cb11-3" class="hljs-ln-code"><a href="#cb11-3"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"PiYG"</span>)<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb11-4" class="hljs-ln-code"><a href="#cb11-4"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Tributario"</span>,<span class="at">x=</span><span class="st">"Niveles medio de nitrito (μg/L)"</span>)<span class="sc">+</span></span>
-<span id="cb11-5" class="hljs-ln-code"><a href="#cb11-5"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb12-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(A, <span class="fu">aes</span>(<span class="at">x =</span> Nitrito, <span class="at">y =</span> Tributario)) <span class="sc">+</span></span>
+<span id="cb12-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_density_ridges</span>(<span class="fu">aes</span>(<span class="at">fill =</span> Tributario)) <span class="sc">+</span></span>
+<span id="cb12-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"PiYG"</span>)<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb12-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Tributario"</span>,<span class="at">x=</span><span class="st">"Niveles medio de nitrito (μg/L)"</span>)<span class="sc">+</span></span>
+<span id="cb12-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -708,22 +728,22 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div></section><section id="cajas-y-bigotes." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Cajas y bigotes.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="|2|3|4|5|6|7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb12-1" class="hljs-ln-code"><a href="#cb12-1"></a><span class="fu">ggplot</span>(A, <span class="fu">aes</span> (<span class="at">x=</span>Tributario, <span class="at">y =</span> pH, <span class="at">fill=</span>Tributario)) <span class="sc">+</span></span>
-<span id="cb12-2" class="hljs-ln-code"><a href="#cb12-2"></a>  <span class="fu">stat_boxplot</span>(<span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>,<span class="at">width=</span><span class="fl">0.1</span>)<span class="sc">+</span></span>
-<span id="cb12-3" class="hljs-ln-code"><a href="#cb12-3"></a>  <span class="fu">geom_boxplot</span>(<span class="at">notch =</span> <span class="cn">TRUE</span>, <span class="at">width=</span> <span class="fl">0.5</span>, <span class="at">outlier.color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb12-4" class="hljs-ln-code"><a href="#cb12-4"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>,</span>
-<span id="cb12-5" class="hljs-ln-code"><a href="#cb12-5"></a>             <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="at">width=</span>.<span class="dv">75</span>), </span>
-<span id="cb12-6" class="hljs-ln-code"><a href="#cb12-6"></a>             <span class="at">color =</span> <span class="st">"black"</span>,<span class="at">shape=</span><span class="dv">4</span>)<span class="sc">+</span></span>
-<span id="cb12-7" class="hljs-ln-code"><a href="#cb12-7"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tributario"</span>, <span class="at">y=</span><span class="st">"pH"</span>)<span class="sc">+</span></span>
-<span id="cb12-8" class="hljs-ln-code"><a href="#cb12-8"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"PiYG"</span>)<span class="sc">+</span></span>
-<span id="cb12-9" class="hljs-ln-code"><a href="#cb12-9"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="|2|3|4|5|6|7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb13-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(A, <span class="fu">aes</span> (<span class="at">x=</span>Tributario, <span class="at">y =</span> pH, <span class="at">fill=</span>Tributario)) <span class="sc">+</span></span>
+<span id="cb13-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">stat_boxplot</span>(<span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>,<span class="at">width=</span><span class="fl">0.1</span>)<span class="sc">+</span></span>
+<span id="cb13-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_boxplot</span>(<span class="at">notch =</span> <span class="cn">TRUE</span>, <span class="at">width=</span> <span class="fl">0.5</span>, <span class="at">outlier.color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb13-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>,</span>
+<span id="cb13-5" class="hljs-ln-code"><a href=""></a>             <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="at">width=</span>.<span class="dv">75</span>), </span>
+<span id="cb13-6" class="hljs-ln-code"><a href=""></a>             <span class="at">color =</span> <span class="st">"black"</span>,<span class="at">shape=</span><span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb13-7" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tributario"</span>, <span class="at">y=</span><span class="st">"pH"</span>)<span class="sc">+</span></span>
+<span id="cb13-8" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"PiYG"</span>)<span class="sc">+</span></span>
+<span id="cb13-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -731,29 +751,30 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div></section><section id="barras-de-medias." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Barras de medias.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="|1|3|4|5|6|7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb13-1" class="hljs-ln-code"><a href="#cb13-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">melt</span>(A[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>()),</span>
-<span id="cb13-2" class="hljs-ln-code"><a href="#cb13-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> variable,<span class="at">y=</span>value,<span class="at">fill=</span>Tributario))<span class="sc">+</span></span>
-<span id="cb13-3" class="hljs-ln-code"><a href="#cb13-3"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data=</span>mean_se,<span class="at">geom=</span><span class="st">"errorbar"</span>,</span>
-<span id="cb13-4" class="hljs-ln-code"><a href="#cb13-4"></a>               <span class="at">width=</span><span class="fl">0.2</span>,<span class="at">colour=</span><span class="st">"black"</span>,</span>
-<span id="cb13-5" class="hljs-ln-code"><a href="#cb13-5"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.7</span>))<span class="sc">+</span></span>
-<span id="cb13-6" class="hljs-ln-code"><a href="#cb13-6"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"bar"</span>,<span class="at">color=</span><span class="st">"black"</span>, </span>
-<span id="cb13-7" class="hljs-ln-code"><a href="#cb13-7"></a>               <span class="at">width=</span><span class="fl">0.7</span>,<span class="at">position =</span> <span class="fu">position_dodge</span>())<span class="sc">+</span></span>
-<span id="cb13-8" class="hljs-ln-code"><a href="#cb13-8"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)<span class="sc">+</span></span>
-<span id="cb13-9" class="hljs-ln-code"><a href="#cb13-9"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">" "</span>, <span class="at">y=</span><span class="st">"concentración (μg/L)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="|1|3|4|5|6|7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb14-1" class="hljs-ln-code"><a href=""></a>A <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">names_to =</span> <span class="st">"variable"</span>,<span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> variable,<span class="at">y=</span>value,<span class="at">fill=</span>Tributario))<span class="sc">+</span></span>
+<span id="cb14-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data=</span>mean_se,<span class="at">geom=</span><span class="st">"errorbar"</span>,</span>
+<span id="cb14-5" class="hljs-ln-code"><a href=""></a>               <span class="at">width=</span><span class="fl">0.2</span>,<span class="at">colour=</span><span class="st">"black"</span>,</span>
+<span id="cb14-6" class="hljs-ln-code"><a href=""></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.7</span>))<span class="sc">+</span></span>
+<span id="cb14-7" class="hljs-ln-code"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"bar"</span>,<span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb14-8" class="hljs-ln-code"><a href=""></a>               <span class="at">width=</span><span class="fl">0.7</span>,<span class="at">position =</span> <span class="fu">position_dodge</span>())<span class="sc">+</span></span>
+<span id="cb14-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)<span class="sc">+</span></span>
+<span id="cb14-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">" "</span>, <span class="at">y=</span><span class="st">"concentración (μg/L)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section><section id="barras-de-medias.-output" class="slide level2 output-location-slide"><h2>Barras de medias.</h2><div class="cell output-location-slide" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -766,12 +787,12 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <section id="gráfico-de-dispersión---relaciones-no-lineales." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Gráfico de dispersión - relaciones no lineales.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb14-1" class="hljs-ln-code"><a href="#cb14-1"></a><span class="fu">ggplot</span>(A,<span class="fu">aes</span>(<span class="at">x=</span>Oxigeno,<span class="at">y=</span>Caloneis,<span class="at">color=</span>Tributario))<span class="sc">+</span></span>
-<span id="cb14-2" class="hljs-ln-code"><a href="#cb14-2"></a>  <span class="fu">geom_point</span>(<span class="at">pch=</span><span class="dv">16</span>,<span class="at">cex=</span><span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb14-3" class="hljs-ln-code"><a href="#cb14-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>,<span class="at">se =</span> <span class="cn">FALSE</span>,<span class="at">span=</span><span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb14-4" class="hljs-ln-code"><a href="#cb14-4"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Niveles medio de oxígeno disuelto (mg/L)"</span>,</span>
-<span id="cb14-5" class="hljs-ln-code"><a href="#cb14-5"></a>       <span class="at">y=</span><span class="st">"Caloneis (N° de individuos)"</span>)<span class="sc">+</span><span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">52</span>))<span class="sc">+</span></span>
-<span id="cb14-6" class="hljs-ln-code"><a href="#cb14-6"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb15-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(A,<span class="fu">aes</span>(<span class="at">x=</span>Oxigeno,<span class="at">y=</span>Caloneis,<span class="at">color=</span>Tributario))<span class="sc">+</span></span>
+<span id="cb15-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">pch=</span><span class="dv">16</span>,<span class="at">cex=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb15-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>,<span class="at">se =</span> <span class="cn">FALSE</span>,<span class="at">span=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb15-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Niveles medio de oxígeno disuelto (mg/L)"</span>,</span>
+<span id="cb15-5" class="hljs-ln-code"><a href=""></a>       <span class="at">y=</span><span class="st">"Caloneis (N° de individuos)"</span>)<span class="sc">+</span><span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">52</span>))<span class="sc">+</span></span>
+<span id="cb15-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -779,24 +800,24 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div></section><section id="gráfico-de-dispersión---relaciones-lineales." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Gráfico de dispersión - relaciones lineales.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="|3|4|5|6|7|8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb15-1" class="hljs-ln-code"><a href="#cb15-1"></a><span class="fu">ggplot</span>(A,<span class="fu">aes</span>(<span class="at">x=</span>Oxigeno,<span class="at">y=</span>Caloneis,<span class="at">fill=</span>Tributario,))<span class="sc">+</span></span>
-<span id="cb15-2" class="hljs-ln-code"><a href="#cb15-2"></a>  <span class="fu">geom_point</span>(<span class="at">pch=</span><span class="dv">21</span>,<span class="at">cex=</span><span class="dv">3</span>,<span class="at">colour=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb15-3" class="hljs-ln-code"><a href="#cb15-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y<span class="sc">~</span>x,<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb15-4" class="hljs-ln-code"><a href="#cb15-4"></a>              <span class="at">span=</span><span class="dv">2</span>,<span class="fu">aes</span>(<span class="at">color=</span>Tributario))<span class="sc">+</span></span>
-<span id="cb15-5" class="hljs-ln-code"><a href="#cb15-5"></a>  <span class="fu">stat_regline_equation</span>(<span class="fu">aes</span>(</span>
-<span id="cb15-6" class="hljs-ln-code"><a href="#cb15-6"></a>    <span class="at">label =</span>  <span class="fu">paste</span>(..eq.label.., ..adj.rr.label.., </span>
-<span id="cb15-7" class="hljs-ln-code"><a href="#cb15-7"></a>                   <span class="at">sep =</span> <span class="st">"~~~~~"</span>),<span class="at">color=</span>Tributario),</span>
-<span id="cb15-8" class="hljs-ln-code"><a href="#cb15-8"></a>    <span class="at">label.x =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>), <span class="at">label.y =</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">45</span>,<span class="dv">40</span>),<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb15-9" class="hljs-ln-code"><a href="#cb15-9"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Niveles medio de oxígeno disuelto (mg/L)"</span>,</span>
-<span id="cb15-10" class="hljs-ln-code"><a href="#cb15-10"></a>       <span class="at">y=</span><span class="st">"Caloneis (N° de individuos)"</span>)<span class="sc">+</span><span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">52</span>))<span class="sc">+</span></span>
-<span id="cb15-11" class="hljs-ln-code"><a href="#cb15-11"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="|3|4|5|6|7|8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb16-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(A,<span class="fu">aes</span>(<span class="at">x=</span>Oxigeno,<span class="at">y=</span>Caloneis,<span class="at">fill=</span>Tributario,))<span class="sc">+</span></span>
+<span id="cb16-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">pch=</span><span class="dv">21</span>,<span class="at">cex=</span><span class="dv">3</span>,<span class="at">colour=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb16-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y<span class="sc">~</span>x,<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb16-4" class="hljs-ln-code"><a href=""></a>              <span class="at">span=</span><span class="dv">2</span>,<span class="fu">aes</span>(<span class="at">color=</span>Tributario))<span class="sc">+</span></span>
+<span id="cb16-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">stat_regline_equation</span>(<span class="fu">aes</span>(</span>
+<span id="cb16-6" class="hljs-ln-code"><a href=""></a>    <span class="at">label =</span>  <span class="fu">paste</span>(..eq.label.., ..adj.rr.label.., </span>
+<span id="cb16-7" class="hljs-ln-code"><a href=""></a>                   <span class="at">sep =</span> <span class="st">"~~~~~"</span>),<span class="at">color=</span>Tributario),</span>
+<span id="cb16-8" class="hljs-ln-code"><a href=""></a>    <span class="at">label.x =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>), <span class="at">label.y =</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">45</span>,<span class="dv">40</span>),<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb16-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Niveles medio de oxígeno disuelto (mg/L)"</span>,</span>
+<span id="cb16-10" class="hljs-ln-code"><a href=""></a>       <span class="at">y=</span><span class="st">"Caloneis (N° de individuos)"</span>)<span class="sc">+</span><span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">52</span>))<span class="sc">+</span></span>
+<span id="cb16-11" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -804,19 +825,19 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div></section><section id="matriz-de-dispersión---gráfico-de-pares." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Matriz de dispersión - Gráfico de pares.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb16-1" class="hljs-ln-code"><a href="#cb16-1"></a><span class="fu">ggpairs</span>(A,<span class="at">columns =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">16</span>,<span class="dv">18</span>,<span class="dv">21</span>), <span class="fu">aes</span>(<span class="at">color=</span>Tributario),</span>
-<span id="cb16-2" class="hljs-ln-code"><a href="#cb16-2"></a>        <span class="at">upper =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"cor"</span>, <span class="at">size =</span> <span class="dv">3</span>,<span class="at">method=</span><span class="st">"spearman"</span>)),</span>
-<span id="cb16-3" class="hljs-ln-code"><a href="#cb16-3"></a>        <span class="at">lower =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"smooth"</span>, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">span=</span><span class="dv">2</span>,</span>
-<span id="cb16-4" class="hljs-ln-code"><a href="#cb16-4"></a>                                       <span class="at">method=</span><span class="st">"loess"</span>)),</span>
-<span id="cb16-5" class="hljs-ln-code"><a href="#cb16-5"></a>        <span class="at">diag =</span> <span class="fu">list</span>(<span class="at">continuos =</span> <span class="fu">wrap</span>(<span class="st">"densityDiag"</span>)))<span class="sc">+</span></span>
-<span id="cb16-6" class="hljs-ln-code"><a href="#cb16-6"></a>  <span class="fu">theme_test</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb17-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggpairs</span>(A,<span class="at">columns =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">16</span>,<span class="dv">18</span>,<span class="dv">21</span>), <span class="fu">aes</span>(<span class="at">color=</span>Tributario),</span>
+<span id="cb17-2" class="hljs-ln-code"><a href=""></a>        <span class="at">upper =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"cor"</span>, <span class="at">size =</span> <span class="dv">3</span>,<span class="at">method=</span><span class="st">"spearman"</span>)),</span>
+<span id="cb17-3" class="hljs-ln-code"><a href=""></a>        <span class="at">lower =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"smooth"</span>, <span class="at">se=</span><span class="cn">FALSE</span>, <span class="at">span=</span><span class="dv">1</span>,</span>
+<span id="cb17-4" class="hljs-ln-code"><a href=""></a>                                       <span class="at">method=</span><span class="st">"loess"</span>)),</span>
+<span id="cb17-5" class="hljs-ln-code"><a href=""></a>        <span class="at">diag =</span> <span class="fu">list</span>(<span class="at">continuos =</span> <span class="fu">wrap</span>(<span class="st">"densityDiag"</span>)))<span class="sc">+</span></span>
+<span id="cb17-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme_test</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -824,29 +845,29 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div></section><section id="matriz-de-correlaciones-lineales---correlograma." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Matriz de correlaciones lineales - Correlograma.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb17-1" class="hljs-ln-code"><a href="#cb17-1"></a><span class="fu">corrplot</span>(<span class="at">corr =</span> <span class="fu">cor</span>(<span class="at">x =</span> A[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>], </span>
-<span id="cb17-2" class="hljs-ln-code"><a href="#cb17-2"></a>                    <span class="at">y=</span>A[,<span class="dv">11</span><span class="sc">:</span><span class="dv">31</span>],</span>
-<span id="cb17-3" class="hljs-ln-code"><a href="#cb17-3"></a>                    <span class="at">method =</span> <span class="st">"spearman"</span>),</span>
-<span id="cb17-4" class="hljs-ln-code"><a href="#cb17-4"></a>         <span class="at">is.corr =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-5" class="hljs-ln-code"><a href="#cb17-5"></a>         <span class="at">method =</span> <span class="st">"ellipse"</span>,</span>
-<span id="cb17-6" class="hljs-ln-code"><a href="#cb17-6"></a>         <span class="at">tl.col =</span> <span class="st">"black"</span>,</span>
-<span id="cb17-7" class="hljs-ln-code"><a href="#cb17-7"></a>         <span class="at">tl.cex =</span> <span class="fl">0.8</span>,</span>
-<span id="cb17-8" class="hljs-ln-code"><a href="#cb17-8"></a>         <span class="at">addCoef.col =</span> <span class="st">'black'</span>,</span>
-<span id="cb17-9" class="hljs-ln-code"><a href="#cb17-9"></a>         <span class="at">number.cex =</span> <span class="fl">0.6</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb18-1" class="hljs-ln-code"><a href=""></a><span class="fu">corrplot</span>(<span class="at">corr =</span> <span class="fu">cor</span>(<span class="at">x =</span> A[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>], </span>
+<span id="cb18-2" class="hljs-ln-code"><a href=""></a>                    <span class="at">y=</span>A[,<span class="dv">11</span><span class="sc">:</span><span class="dv">31</span>],</span>
+<span id="cb18-3" class="hljs-ln-code"><a href=""></a>                    <span class="at">method =</span> <span class="st">"spearman"</span>),</span>
+<span id="cb18-4" class="hljs-ln-code"><a href=""></a>         <span class="at">is.corr =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-5" class="hljs-ln-code"><a href=""></a>         <span class="at">method =</span> <span class="st">"ellipse"</span>,</span>
+<span id="cb18-6" class="hljs-ln-code"><a href=""></a>         <span class="at">tl.col =</span> <span class="st">"black"</span>,</span>
+<span id="cb18-7" class="hljs-ln-code"><a href=""></a>         <span class="at">tl.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb18-8" class="hljs-ln-code"><a href=""></a>         <span class="at">addCoef.col =</span> <span class="st">'black'</span>,</span>
+<span id="cb18-9" class="hljs-ln-code"><a href=""></a>         <span class="at">number.cex =</span> <span class="fl">0.6</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section><section id="matriz-de-correlaciones-lineales---correlograma.-output" class="slide level2 output-location-slide"><h2>Matriz de correlaciones lineales - Correlograma.</h2><div class="cell output-location-slide" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="Presentación_EDMV_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -859,20 +880,17 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <section id="librerías-requeridas.-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Librerías requeridas.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb18-1" class="hljs-ln-code"><a href="#cb18-1"></a><span class="fu">library</span>(MVN)</span>
-<span id="cb18-2" class="hljs-ln-code"><a href="#cb18-2"></a><span class="fu">library</span>(biotools)</span>
-<span id="cb18-3" class="hljs-ln-code"><a href="#cb18-3"></a><span class="fu">library</span>(rstatix)</span>
-<span id="cb18-4" class="hljs-ln-code"><a href="#cb18-4"></a><span class="fu">library</span>(psych)</span>
-<span id="cb18-5" class="hljs-ln-code"><a href="#cb18-5"></a><span class="fu">library</span>(qqplotr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment" data-layout-align="center">
-
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb19-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(MVN)</span>
+<span id="cb19-2" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(biotools)</span>
+<span id="cb19-3" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb19-4" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(psych)</span>
+<span id="cb19-5" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(qqplotr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="normalidad-univariante." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Normalidad univariante.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb19-1" class="hljs-ln-code"><a href="#cb19-1"></a><span class="fu">mvn</span>(<span class="at">data =</span> A[,<span class="dv">2</span><span class="sc">:</span><span class="dv">31</span>],<span class="at">univariateTest =</span> <span class="st">"SW"</span>)<span class="sc">$</span>univariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb20-1" class="hljs-ln-code"><a href=""></a><span class="fu">mvn</span>(<span class="at">data =</span> A[,<span class="dv">2</span><span class="sc">:</span><span class="dv">31</span>],<span class="at">univariateTest =</span> <span class="st">"SW"</span>)<span class="sc">$</span>univariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -913,7 +931,7 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <section id="normalidad-multivariante." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Normalidad multivariante.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb21-1" class="hljs-ln-code"><a href="#cb21-1"></a><span class="fu">mvn</span>(<span class="at">data =</span> A[,<span class="dv">2</span><span class="sc">:</span><span class="dv">31</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb22-1" class="hljs-ln-code"><a href=""></a><span class="fu">mvn</span>(<span class="at">data =</span> A[,<span class="dv">2</span><span class="sc">:</span><span class="dv">31</span>],<span class="at">mvnTest =</span> <span class="st">"mardia"</span>)<span class="sc">$</span>multivariateNormality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -927,8 +945,8 @@ Oxigeno 7.6425000 -0.3919184 -1.2165765</code></pre>
 <section id="homocedasticidad-multivariante." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Homocedasticidad multivariante.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb23-1" class="hljs-ln-code"><a href="#cb23-1"></a>A<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(A)</span>
-<span id="cb23-2" class="hljs-ln-code"><a href="#cb23-2"></a><span class="fu">boxM</span>(<span class="at">data =</span> A[,<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>],<span class="at">grouping =</span> A[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb24-1" class="hljs-ln-code"><a href=""></a>A<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(A)</span>
+<span id="cb24-2" class="hljs-ln-code"><a href=""></a><span class="fu">boxM</span>(<span class="at">data =</span> A[,<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>],<span class="at">grouping =</span> A[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -943,11 +961,11 @@ Chi-Sq (approx.) = 89.356, df = 42, p-value = 2.869e-05</code></pre>
 <section id="multicolinealidad-y-variables-correladas." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Multicolinealidad y variables correladas.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb25-1" class="hljs-ln-code"><a href="#cb25-1"></a>A <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2" class="hljs-ln-code"><a href="#cb25-2"></a>  <span class="fu">cor_test</span>(Amonio,Nitrito, Nitrato,pH,Oxigeno,Caudal,Luz,Temp,Cond,</span>
-<span id="cb25-3" class="hljs-ln-code"><a href="#cb25-3"></a>           <span class="at">method =</span> <span class="st">"spearman"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-4" class="hljs-ln-code"><a href="#cb25-4"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">select</span>(var1,var2, cor,p) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-5" class="hljs-ln-code"><a href="#cb25-5"></a>  <span class="fu">filter</span>(p<span class="sc">&lt;</span><span class="fl">0.05</span><span class="sc">&amp;</span>var1<span class="sc">!=</span>var2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb26-1" class="hljs-ln-code"><a href=""></a>A <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">cor_test</span>(Amonio,Nitrito, Nitrato,pH,Oxigeno,Caudal,Luz,Temp,Cond,</span>
+<span id="cb26-3" class="hljs-ln-code"><a href=""></a>           <span class="at">method =</span> <span class="st">"spearman"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">select</span>(var1,var2, cor,p) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">filter</span>(p<span class="sc">&lt;</span><span class="fl">0.05</span><span class="sc">&amp;</span>var1<span class="sc">!=</span>var2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -964,8 +982,8 @@ Chi-Sq (approx.) = 89.356, df = 42, p-value = 2.869e-05</code></pre>
 <section id="multicolinealidad-y-variables-correladas.-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Multicolinealidad y variables correladas.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb27-1" class="hljs-ln-code"><a href="#cb27-1"></a><span class="fu">cortest.bartlett</span>(<span class="at">R =</span> <span class="fu">cor</span>(A[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>], <span class="at">method =</span> <span class="st">"spearman"</span>),</span>
-<span id="cb27-2" class="hljs-ln-code"><a href="#cb27-2"></a>                 <span class="at">n =</span> <span class="fu">nrow</span>(A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb28-1" class="hljs-ln-code"><a href=""></a><span class="fu">cortest.bartlett</span>(<span class="at">R =</span> <span class="fu">cor</span>(A[,<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>], <span class="at">method =</span> <span class="st">"spearman"</span>),</span>
+<span id="cb28-2" class="hljs-ln-code"><a href=""></a>                 <span class="at">n =</span> <span class="fu">nrow</span>(A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -983,12 +1001,12 @@ $df
 <section id="datos-atípicos-multivariante." class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Datos atípicos multivariante.</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb29-1" class="hljs-ln-code"><a href="#cb29-1"></a>A[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>] <span class="sc">%&gt;%</span></span>
-<span id="cb29-2" class="hljs-ln-code"><a href="#cb29-2"></a>  <span class="fu">group_by</span>(Tributario) <span class="sc">%&gt;%</span></span>
-<span id="cb29-3" class="hljs-ln-code"><a href="#cb29-3"></a>  mahalanobis_distance <span class="sc">%&gt;%</span></span>
-<span id="cb29-4" class="hljs-ln-code"><a href="#cb29-4"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb29-5" class="hljs-ln-code"><a href="#cb29-5"></a>  <span class="fu">add_column</span>(<span class="at">qchisq=</span><span class="fu">rep</span>(<span class="fu">round</span>(<span class="fu">qchisq</span>(<span class="at">p =</span> <span class="fl">0.999</span>,<span class="at">df =</span> <span class="dv">7</span>),<span class="dv">4</span>),<span class="dv">24</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-6" class="hljs-ln-code"><a href="#cb29-6"></a>  <span class="fu">select</span>(mahal.dist, is.outlier, qchisq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb30-1" class="hljs-ln-code"><a href=""></a>A[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb30-2" class="hljs-ln-code"><a href=""></a>  <span class="fu">group_by</span>(Tributario) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3" class="hljs-ln-code"><a href=""></a>  mahalanobis_distance <span class="sc">%&gt;%</span></span>
+<span id="cb30-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">add_column</span>(<span class="at">qchisq=</span><span class="fu">rep</span>(<span class="fu">round</span>(<span class="fu">qchisq</span>(<span class="at">p =</span> <span class="fl">0.999</span>,<span class="at">df =</span> <span class="dv">7</span>),<span class="dv">4</span>),<span class="dv">24</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">select</span>(mahal.dist, is.outlier, qchisq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -1019,9 +1037,11 @@ $df
 24      3.933      FALSE 24.3219</code></pre>
 </div>
 </div>
+<div class="quarto-auto-generated-content">
+<p><img src="https://oceanexpert.org/uploads/institutes/10047/instituteLogo.jpg" class="slide-logo"></p>
+<div class="footer footer-default">
 
-<img src="https://oceanexpert.org/uploads/institutes/10047/instituteLogo.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
-
+</div>
 </div>
 </section></section>
     </div>
@@ -1048,9 +1068,8 @@ $df
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-'controlsAuto': false,
+'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1059,7 +1078,7 @@ $df
 'smaller': false,
  
         // Display controls in the bottom right corner
-        controls: true,
+        controls: false,
 
         // Help the user learn the controls by providing hints, for example by
         // bouncing the down arrow when they first encounter a vertical slide
@@ -1079,7 +1098,7 @@ $df
         slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
+        showSlideNumber: 'print',
 
         // Add the current slide number to the URL hash so that reloading the
         // page/copying the URL will return you to the same slide
@@ -1181,7 +1200,7 @@ $df
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -1236,42 +1255,80 @@ $df
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1305,18 +1362,7 @@ $df
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1348,11 +1394,50 @@ $df
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1362,8 +1447,17 @@ $df
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1377,7 +1471,11 @@ $df
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
