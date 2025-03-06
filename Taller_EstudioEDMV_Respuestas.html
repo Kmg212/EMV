@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Taller de Estudio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Taller_EstudioEDMV_Respuestas_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Taller_EstudioEDMV_Respuestas_files/libs/quarto-html/quarto.js"></script>
+<script src="Taller_EstudioEDMV_Respuestas_files/libs/quarto-html/popper.min.js"></script>
+<script src="Taller_EstudioEDMV_Respuestas_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Taller_EstudioEDMV_Respuestas_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Taller_EstudioEDMV_Respuestas_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Taller_EstudioEDMV_Respuestas_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Taller_EstudioEDMV_Respuestas_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Taller_EstudioEDMV_Respuestas_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Taller_EstudioEDMV_Respuestas_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="Taller_EstudioEDMV_Respuestas_files/libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="Taller_EstudioEDMV_Respuestas_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Taller de Estudio</h1>
+<p class="subtitle lead">EXPORACIÓN DE DATOS CON RSTUDIO</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="importación-de-datos." class="level1">
+<h1>1. Importación de datos.</h1>
+<section id="librerías." class="level2">
+<h2 class="anchored" data-anchor-id="librerías.">Librerías.</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MVN)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmosaic)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biotools)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="datos." class="level2">
+<h2 class="anchored" data-anchor-id="datos.">Datos.</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [12 × 24] (S3: tbl_df/tbl/data.frame)
+ $ ID    : chr [1:12] "sp1" "sp2" "sp3" "sp4" ...
+ $ Season: Factor w/ 2 levels "sp","wi": 1 1 1 1 1 1 2 2 2 2 ...
+ $ Site  : num [1:12] 1 2 3 4 5 6 1 2 3 4 ...
+ $ Eda   : num [1:12] 4 0 0 0 0 2 3 0 0 0 ...
+ $ Bsp   : num [1:12] 7 0 5 3 5 7 6 3 0 6 ...
+ $ Brh   : num [1:12] 10 8 5 6 6 9 7 6 3 10 ...
+ $ Bni   : num [1:12] 9 0 0 0 0 4 0 0 0 0 ...
+ $ Bpu   : num [1:12] 0 0 0 0 0 0 6 0 0 0 ...
+ $ Cen   : num [1:12] 0 0 0 0 0 0 7 5 1 5 ...
+ $ Ecd   : num [1:12] 0 0 0 0 5 0 0 0 0 1 ...
+ $ Rhi   : num [1:12] 5 0 2 3 0 5 4 4 1 3 ...
+ $ Hla   : num [1:12] 9 4 5 6 4 6 8 3 0 5 ...
+ $ Par   : num [1:12] 4 0 0 0 0 2 4 1 0 2 ...
+ $ Eig   : num [1:12] 0 0 0 0 4 10 0 0 0 0 ...
+ $ Temp  : num [1:12] 10 11 11 12 13 11 3 3 3 3 ...
+ $ Flow  : num [1:12] 41 158 198 280 322 303 118 252 315 498 ...
+ $ pH    : num [1:12] 8.5 8.3 8.5 8.6 8.5 8.5 8 8.3 8.3 8.3 ...
+ $ Cond  : num [1:12] 295 315 290 290 285 245 325 360 370 330 ...
+ $ Oxyg  : num [1:12] 110 13 113 126 117 100 100 100 100 100 ...
+ $ Bdo5  : num [1:12] 2.3 7.6 3.3 3.5 3.6 1.7 1.6 9.5 8.7 4.8 ...
+ $ Oxyd  : num [1:12] 1.4 3.3 1.5 1.5 1.6 0.9 1.2 2.9 2.8 1.6 ...
+ $ Ammo  : num [1:12] 0.12 2.85 0.4 0.45 0.48 0.05 0.17 2.52 2.8 1.04 ...
+ $ Nitr  : num [1:12] 3.4 2.7 4 4 4.6 2.7 1.8 4.6 4.8 4.4 ...
+ $ Phos  : num [1:12] 0.11 1.5 0.1 0.73 0.84 0.16 0.19 1.6 2.85 0.82 ...</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="exploración-numerica." class="level1">
+<h1>2. EXPLORACIÓN NUMERICA.</h1>
+<section id="paso-5." class="level2">
+<h2 class="anchored" data-anchor-id="paso-5.">PASO 5.</h2>
+<p>Usando las funciones básicas del tidyverse y/o la exploración de datos MV en&nbsp;RSTUDIOrealice un resumen numérico&nbsp;de las variables&nbsp; &nbsp;“Temp”, “pH”, “Bdo5”, “Ammo”, “Nitr” y &nbsp;“Phos”. La descripción debe incluir la media, la desviación estándar, la mediana, min, máx, Q1, Q3, asimetría y curtosis.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">n</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Std.Dev</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Median</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Min</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Max</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">25th</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">75th</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Skew</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Kurtosis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Temp</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">7.0833333</td>
+<td style="text-align: right;">4.5016832</td>
+<td style="text-align: right;">6.500</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">3.0000</td>
+<td style="text-align: right;">11.000</td>
+<td style="text-align: right;">0.0541357</td>
+<td style="text-align: right;">-2.0572551</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pH</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">8.3500000</td>
+<td style="text-align: right;">0.1732051</td>
+<td style="text-align: right;">8.300</td>
+<td style="text-align: right;">8.00</td>
+<td style="text-align: right;">8.60</td>
+<td style="text-align: right;">8.2750</td>
+<td style="text-align: right;">8.500</td>
+<td style="text-align: right;">-0.3367877</td>
+<td style="text-align: right;">-0.9652778</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bdo5</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">4.1333333</td>
+<td style="text-align: right;">2.9099620</td>
+<td style="text-align: right;">3.400</td>
+<td style="text-align: right;">1.30</td>
+<td style="text-align: right;">9.50</td>
+<td style="text-align: right;">1.7000</td>
+<td style="text-align: right;">5.500</td>
+<td style="text-align: right;">0.7331652</td>
+<td style="text-align: right;">-1.1442364</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ammo</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0.9566667</td>
+<td style="text-align: right;">1.1023061</td>
+<td style="text-align: right;">0.465</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">0.1575</td>
+<td style="text-align: right;">1.410</td>
+<td style="text-align: right;">0.8592538</td>
+<td style="text-align: right;">-1.1451665</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nitr</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">3.6833333</td>
+<td style="text-align: right;">1.0928140</td>
+<td style="text-align: right;">4.000</td>
+<td style="text-align: right;">1.80</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">2.7000</td>
+<td style="text-align: right;">4.600</td>
+<td style="text-align: right;">-0.3972354</td>
+<td style="text-align: right;">-1.5068424</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Phos</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0.8025000</td>
+<td style="text-align: right;">0.8298973</td>
+<td style="text-align: right;">0.665</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">0.1525</td>
+<td style="text-align: right;">1.005</td>
+<td style="text-align: right;">1.1581506</td>
+<td style="text-align: right;">0.3743001</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="paso-6." class="level2">
+<h2 class="anchored" data-anchor-id="paso-6.">PASO 6.</h2>
+<p>Usando las funciones básicas del tidyverse y/o la exploración de datos MV en&nbsp;RSTUDIO realice un resumen numérico <strong>por época</strong> de las variables <strong>“</strong>Temp”, “pH”,&nbsp; “Ammo”, “Nitr” y &nbsp;“Phos”. La descripción debe incluir la media, la desviación estándar, la mediana, min, máx, Q1, Q3, asimetría y curtosis.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Season</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">M</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">SD</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Mdn</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Min</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Max</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Q1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Q3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Skew</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Kurtosis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">sp</td>
+<td style="text-align: left;">Ammo</td>
+<td style="text-align: right;">0.7250000</td>
+<td style="text-align: right;">1.0562717</td>
+<td style="text-align: right;">0.425</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">0.1900</td>
+<td style="text-align: right;">0.4725</td>
+<td style="text-align: right;">1.2723708</td>
+<td style="text-align: right;">-0.2214051</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sp</td>
+<td style="text-align: left;">Phos</td>
+<td style="text-align: right;">0.5733333</td>
+<td style="text-align: right;">0.5592733</td>
+<td style="text-align: right;">0.445</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">1.50</td>
+<td style="text-align: right;">0.1225</td>
+<td style="text-align: right;">0.8125</td>
+<td style="text-align: right;">0.5167842</td>
+<td style="text-align: right;">-1.5204514</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sp</td>
+<td style="text-align: left;">Temp</td>
+<td style="text-align: right;">11.3333333</td>
+<td style="text-align: right;">1.0327956</td>
+<td style="text-align: right;">11.000</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">11.0000</td>
+<td style="text-align: right;">11.7500</td>
+<td style="text-align: right;">0.3698161</td>
+<td style="text-align: right;">-1.3723958</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sp</td>
+<td style="text-align: left;">pH</td>
+<td style="text-align: right;">8.4833333</td>
+<td style="text-align: right;">0.0983192</td>
+<td style="text-align: right;">8.500</td>
+<td style="text-align: right;">8.30</td>
+<td style="text-align: right;">8.60</td>
+<td style="text-align: right;">8.5000</td>
+<td style="text-align: right;">8.5000</td>
+<td style="text-align: right;">-0.7988679</td>
+<td style="text-align: right;">-0.6540824</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">wi</td>
+<td style="text-align: left;">Ammo</td>
+<td style="text-align: right;">1.1883333</td>
+<td style="text-align: right;">1.1952643</td>
+<td style="text-align: right;">0.800</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">2.80</td>
+<td style="text-align: right;">0.2675</td>
+<td style="text-align: right;">2.1500</td>
+<td style="text-align: right;">0.3636762</td>
+<td style="text-align: right;">-1.9497135</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">wi</td>
+<td style="text-align: left;">Phos</td>
+<td style="text-align: right;">1.0316667</td>
+<td style="text-align: right;">1.0374857</td>
+<td style="text-align: right;">0.710</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">0.2925</td>
+<td style="text-align: right;">1.4050</td>
+<td style="text-align: right;">0.7128549</td>
+<td style="text-align: right;">-1.2398490</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">wi</td>
+<td style="text-align: left;">Temp</td>
+<td style="text-align: right;">2.8333333</td>
+<td style="text-align: right;">0.4082483</td>
+<td style="text-align: right;">3.000</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.0000</td>
+<td style="text-align: right;">3.0000</td>
+<td style="text-align: right;">-1.3608276</td>
+<td style="text-align: right;">-0.0833333</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">wi</td>
+<td style="text-align: left;">pH</td>
+<td style="text-align: right;">8.2166667</td>
+<td style="text-align: right;">0.1169045</td>
+<td style="text-align: right;">8.250</td>
+<td style="text-align: right;">8.00</td>
+<td style="text-align: right;">8.30</td>
+<td style="text-align: right;">8.2000</td>
+<td style="text-align: right;">8.3000</td>
+<td style="text-align: right;">-0.8808986</td>
+<td style="text-align: right;">-0.9042733</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+</section>
+<section id="exploración-gráfica." class="level1">
+<h1>3. EXPLORACIÓN GRÁFICA.</h1>
+<section id="paso-7." class="level2">
+<h2 class="anchored" data-anchor-id="paso-7.">PASO 7.</h2>
+<p>Usando las funciones básicas para realizar exploraciones gráficas en RSTUDIO realice cada unos de los gráficos de composición de las especies (Barras y Mosaico por época; Burbujas por sitio y Bdo5)</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Taller_EstudioEDMV_Respuestas_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Taller_EstudioEDMV_Respuestas_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Taller_EstudioEDMV_Respuestas_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="paso-8." class="level2">
+<h2 class="anchored" data-anchor-id="paso-8.">PASO 8.</h2>
+<p>Usando las funciones básicas para realizar exploraciones gráficas en RSTUDIO realice un gráfico de dispersión por paneles de 5 columnas que muestre la relación entre las variables fisicoquímicas y la abundancia de la especie Brh separada por época.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Taller_EstudioEDMV_Respuestas_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="paso-9." class="level2">
+<h2 class="anchored" data-anchor-id="paso-9.">PASO 9.</h2>
+<p>Usando las funciones básicas para realizar exploraciones gráficas en RSTUDIO realice un gráfico de matriz de dispersión de todas las variables fisicoquímicas.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Taller_EstudioEDMV_Respuestas_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="paso-10." class="level2">
+<h2 class="anchored" data-anchor-id="paso-10.">PASO 10.</h2>
+<p>Usando las funciones básicas para realizar exploraciones gráficas en RSTUDIO realice un gráfico de comparación para las variables “Ammo”, “Nitr”, y “Phos” entre épocas.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Taller_EstudioEDMV_Respuestas_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Taller_EstudioEDMV_Respuestas_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="paso-11." class="level2">
+<h2 class="anchored" data-anchor-id="paso-11.">PASO 11.</h2>
+<p>Usando las funciones básicas para realizar exploraciones gráficas en RSTUDIO realice un correlograma que incluya todas las variables numéricas. De preferencia el tipo 2. (Ver: Diapositivas 2. EXPLORACIÓN DE DATOS MULTIVARIADOS CON RSTUDIO)</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Taller_EstudioEDMV_Respuestas_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="verificación-de-supuestos." class="level1">
+<h1>3. VERIFICACIÓN DE SUPUESTOS.</h1>
+<section id="paso-12." class="level2">
+<h2 class="anchored" data-anchor-id="paso-12.">PASO 12.</h2>
+<p>Usando las funciones básicas para realizar test de verificación de supuesto en RSTUDIO realice el test de normalidad Shapiro &amp;Wilks para todos los factores fisicoquímicos.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Test</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Statistic</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">p value</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Normality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Shapiro-Wilk</td>
+<td style="text-align: left;">Temp</td>
+<td style="text-align: left;">0.7715</td>
+<td style="text-align: left;">0.0045</td>
+<td style="text-align: left;">NO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shapiro-Wilk</td>
+<td style="text-align: left;">Flow</td>
+<td style="text-align: left;">0.9746</td>
+<td style="text-align: left;">0.9523</td>
+<td style="text-align: left;">YES</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Shapiro-Wilk</td>
+<td style="text-align: left;">pH</td>
+<td style="text-align: left;">0.9128</td>
+<td style="text-align: left;">0.2320</td>
+<td style="text-align: left;">YES</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shapiro-Wilk</td>
+<td style="text-align: left;">Cond</td>
+<td style="text-align: left;">0.9504</td>
+<td style="text-align: left;">0.6435</td>
+<td style="text-align: left;">YES</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Shapiro-Wilk</td>
+<td style="text-align: left;">Oxyg</td>
+<td style="text-align: left;">0.5938</td>
+<td style="text-align: left;">0.0001</td>
+<td style="text-align: left;">NO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shapiro-Wilk</td>
+<td style="text-align: left;">Bdo5</td>
+<td style="text-align: left;">0.8414</td>
+<td style="text-align: left;">0.0288</td>
+<td style="text-align: left;">NO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Shapiro-Wilk</td>
+<td style="text-align: left;">Oxyd</td>
+<td style="text-align: left;">0.8451</td>
+<td style="text-align: left;">0.0320</td>
+<td style="text-align: left;">NO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shapiro-Wilk</td>
+<td style="text-align: left;">Ammo</td>
+<td style="text-align: left;">0.7517</td>
+<td style="text-align: left;">0.0028</td>
+<td style="text-align: left;">NO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Shapiro-Wilk</td>
+<td style="text-align: left;">Nitr</td>
+<td style="text-align: left;">0.9094</td>
+<td style="text-align: left;">0.2096</td>
+<td style="text-align: left;">YES</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shapiro-Wilk</td>
+<td style="text-align: left;">Phos</td>
+<td style="text-align: left;">0.8200</td>
+<td style="text-align: left;">0.0160</td>
+<td style="text-align: left;">NO</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="paso-13." class="level2">
+<h2 class="anchored" data-anchor-id="paso-13.">PASO 13.</h2>
+<p>Usando las funciones básicas para realizar test de verificación de supuesto en RSTUDIO realice el test de normalidad multivariada de Mardia uno con todos los factores fisicoquímicos y otro con las abundancias de las especies.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Factores fisicoquímicos</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Test</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Statistic</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">p value</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mardia Skewness</td>
+<td style="text-align: left;">219.872603435604</td>
+<td style="text-align: left;">0.489741939396493</td>
+<td style="text-align: left;">YES</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mardia Kurtosis</td>
+<td style="text-align: left;">-2.07677758651762</td>
+<td style="text-align: left;">0.0378220918091794</td>
+<td style="text-align: left;">NO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MVN</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NO</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Abundancias</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Test</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Statistic</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">p value</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mardia Skewness</td>
+<td style="text-align: left;">285.999999999751</td>
+<td style="text-align: left;">0.488879164912178</td>
+<td style="text-align: left;">YES</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mardia Kurtosis</td>
+<td style="text-align: left;">-2.25320284860363</td>
+<td style="text-align: left;">0.0242463618842146</td>
+<td style="text-align: left;">NO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MVN</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NO</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="paso-14." class="level2">
+<h2 class="anchored" data-anchor-id="paso-14.">PASO 14.</h2>
+<p>Usando las funciones básicas para realizar test de verificación de supuesto en RSTUDIO realice el test M de box con los factores fisicoquímicos de las columnas 16,19,21,22,23.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Box's M-test for Homogeneity of Covariance Matrices
+
+data:  E[, c(16, 19, 21, 22, 23)]
+Chi-Sq (approx.) = Inf, df = 15, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="paso-15." class="level2">
+<h2 class="anchored" data-anchor-id="paso-15.">PASO 15.</h2>
+<p>Usando las funciones básicas para realizar test de verificación de supuesto en RSTUDIO realice el test esfericidad de Bartlett con todos los factores fisicoquímicos.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>$chisq
+[1] 123.8912
+
+$p.value
+[1] 2.681362e-09
+
+$df
+[1] 45</code></pre>
+</div>
+</div>
+</section>
+<section id="paso-16." class="level2">
+<h2 class="anchored" data-anchor-id="paso-16.">PASO 16.</h2>
+<p>Usando las funciones básicas para realizar test de verificación de supuesto en RSTUDIO identifique si hay datos atípicos influyentes a nivel multivariado con los factores fisicoquímicos de la columna 20 a la 24 por época.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">mahal.dist</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">is.outlier</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">qchisq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2.363</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.821</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.413</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.928</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.803</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.165</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.457</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.562</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.251</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.528</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.654</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.056</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">27.8772</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
